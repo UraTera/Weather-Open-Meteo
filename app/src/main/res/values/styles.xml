@@ -1,0 +1,101 @@
+<resources>
+
+    <style name="text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="text.date">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="text_param">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">16dp</item>
+    </style>
+
+    <style name="text_small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+    <style name="view_color">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="text_frame">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+
+    <style name="title_rc">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:textColor">@color/textM</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/title_rc</item>
+    </style>
+
+
+    <!--  Планшет  -->
+    <style name="text.tab">
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="text_small.tab">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="title_rc.tab">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text_setting">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="text_setting.title">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text_rb">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">12dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:theme">@style/radio_button</item>
+    </style>
+
+    <style name="text_rb.font">
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <style name="radio_button" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/gray_200</item>
+        <item name="colorControlActivated">@color/blue_200</item>
+    </style>
+
+</resources>

@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="app_widget_description">Phone</string>
+    <string name="app_widget_tab_description">Tablet</string>
+
+    <string name="todo" translatable="false">TODO</string>
+    <string name="city">City</string>
+    <string name="time" translatable="false">23:56</string>
+    <string name="date" translatable="false">Aug 23 Fri.</string>
+    <string name="date_up" translatable="false">Aug 23 23:56</string>
+    <string name="date2" translatable="false">Aug 24 Fri.</string>
+    <string name="date5" translatable="false">Aug 24</string>
+    <string name="week" translatable="false">Sat.</string>
+    <string name="temp" translatable="false">25°C</string>
+
+    <string name="no_net">No internet connection!</string>
+    <string name="no_gps">Location disabled!</string>
+    <string name="enable_gps">Enable location detection?</string>
+    <string name="error_connect">Connection error!</string>
+    <string name="updates">Updates</string>
+    <string name="period_update">The update period is shorter</string>
+    <string name="history_clear">History cleared</string>
+
+    <!-- Настройка -->
+    <string name="setting">Setting</string>
+    <string name="set_period">Widget update period</string>
+
+    <string-array name="period_array">
+        <item>15 min.</item>
+        <item>30 min.</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>12 hours</item>
+        <item>24 hours</item>
+    </string-array>
+
+    <string name="font_clock">Clock font</string>
+
+    <string-array name="font_array">
+        <item>Normal</item>
+        <item>Italics</item>
+        <item>Bold</item>
+        <item>Bold Italic</item>
+        <item>LED</item>
+        <item>LED italic</item>
+    </string-array>
+
+    <!-- Погода -->
+    <string name="forecast_1">Hourly forecast</string>
+    <string name="forecast_6">Forecast for 6 days</string>
+    <string name="none" translatable="false">---------------</string>
+    <string name="humidity">Humidity:</string>
+    <string name="sunrise">Sunrise:</string>
+    <string name="sunset">Sunset:</string>
+
+
+    <string name="units">Units of measurement</string>
+    <string name="unit_temp_text">Temperature</string>
+    <string name="unit_press_text">Pressure</string>
+    <string name="unit_wind_text">Wind speed</string>
+
+    <!-- Давление -->
+    <string name="pressure">Pressure:</string>
+    <string name="unit_press_mmHg">mmHg</string>
+    <string name="unit_press_hpa">gPa</string>
+    <string name="unit_press_mbr">mbar</string>
+
+    <!-- Ветер -->
+    <string name="wind">Wind:</string>
+    <string name="unit_wind_kmh">km/h</string>
+    <string name="unit_wind_mc">m/s</string>
+    <string name="unit_wind_mlh">mph</string>
+
+    <!-- Направление ветра-->
+    <string name="ne">NE</string>
+    <string name="e">E</string>
+    <string name="se">SE</string>
+    <string name="s">S</string>
+    <string name="sw">SW</string>
+    <string name="w">W</string>
+    <string name="nw">NW</string>
+    <string name="n">N</string>
+
+
+    <!-- Описание погоды -->
+    <string name="wmo0">Clear</string>
+    <string name="wmo1">Mainly clear</string>
+    <string name="wmo2">Partly cloudy</string>
+    <string name="wmo3">Overcast</string>
+    <string name="wmo45">Fog</string>
+    <string name="wmo48">Depositing rime fog</string>
+    <string name="wmo51">Drizzle light</string>
+    <string name="wmo53">Drizzle moderate</string>
+    <string name="wmo55">Drizzle dense intensity</string>
+    <string name="wmo56">Freezing drizzle light</string>
+    <string name="wmo57">Freezing drizzle light</string>
+    <string name="wmo61">Slight rain</string>
+    <string name="wmo63">Moderate rain</string>
+    <string name="wmo65">Heavy intensity rain</string>
+    <string name="wmo66">Freezing rain</string>
+    <string name="wmo67">Heavy freezing rain</string>
+    <string name="wmo71">"Slight snow "</string>
+    <string name="wmo73">"Moderate snow "</string>
+    <string name="wmo75">Heavy snow</string>
+    <string name="wmo77">Snow grains</string>
+    <string name="wmo80">Slight rain showers</string>
+    <string name="wmo81">Moderate rain showers</string>
+    <string name="wmo82">Violent rain showers</string>
+    <string name="wmo85">Snow showers slight</string>
+    <string name="wmo86">Snow showers heavy</string>
+    <string name="wmo95">"Thunderstorm "</string>
+    <string name="wmo96">Thunderstorm with slight hail</string>
+    <string name="wmo99">Thunderstorm with slight hail</string>
+
+
+
+
+</resources>

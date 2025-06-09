@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_900"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity"
+    tools:ignore="HardcodedText">
+    <!--    android:background="@color/blue_900"-->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tool_bar_height"
+        android:background="@color/title"
+        app:navigationIcon="@drawable/ic_arrow_back">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:gravity="center_vertical"
+            android:text="@string/setting"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/lineRadio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/text_setting.title"
+                android:layout_marginBottom="16dp"
+                android:text="@string/units" />
+
+            <TextView
+                style="@style/text_setting"
+                android:text="@string/unit_temp_text" />
+
+            <RadioGroup
+                android:id="@+id/rgTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbC"
+                    style="@style/text_rb"
+                    android:checked="true"
+                    android:text="°C"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/rbF"
+                    style="@style/text_rb"
+                    android:text="°F"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </RadioGroup>
+
+            <TextView
+                style="@style/text_setting"
+                android:text="@string/unit_press_text" />
+
+            <RadioGroup
+                android:id="@+id/rgPress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbHPa"
+                    style="@style/text_rb"
+                    android:checked="true"
+                    android:text="@string/unit_press_hpa"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/rbMBar"
+                    style="@style/text_rb"
+                    android:text="@string/unit_press_mbr"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/rbMmHg"
+                    style="@style/text_rb"
+                    android:text="@string/unit_press_mmHg"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </RadioGroup>
+
+            <TextView
+                style="@style/text_setting"
+                android:text="@string/unit_wind_text" />
+
+            <RadioGroup
+                android:id="@+id/rgWind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbKmHour"
+                    style="@style/text_rb"
+                    android:checked="true"
+                    android:text="@string/unit_wind_kmh"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/rbMSec"
+                    style="@style/text_rb"
+                    android:text="@string/unit_wind_mc"
+                    android:textColor="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/rbMiHour"
+                    style="@style/text_rb"
+                    android:text="@string/unit_wind_mlh"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </RadioGroup>
+
+            <TextView
+                style="@style/text_setting"
+                android:layout_marginBottom="12dp"
+                android:text="@string/set_period" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue_800">
+
+                <Spinner
+                    android:id="@+id/spPeriod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="40dp"
+                    android:backgroundTint="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </androidx.cardview.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <TextView
+                style="@style/text_setting.title"
+                android:text="@string/font_clock" />
+
+            <TextClock
+                android:id="@+id/tcTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="12dp"
+                android:format24Hour="H:mm"
+                android:textColor="@color/clockColor"
+                android:textSize="26sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blue_800">
+
+                <Spinner
+                    android:id="@+id/spFont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="40dp"
+                    android:backgroundTint="@color/white"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </androidx.cardview.widget.CardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

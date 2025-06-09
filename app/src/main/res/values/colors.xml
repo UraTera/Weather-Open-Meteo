@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="title">#0B4080</color>             <!-- Заголовок -->
+    <color name="title_rc">#92245897</color>        <!-- Заголовок списков -->
+    <color name="groundM">#2B7DA8</color>           <!-- Общий фон -->
+    <color name="clockColor">#A1FBB0</color>        <!-- Часы -->
+    <color name="textM">#FCFEFF</color>             <!-- Текст общего фона -->
+    <color name="groundCard">#A3045A8A</color>      <!-- Карточки полупрозрачные -->
+    <color name="groundCardBut">#045A8A</color>     <!-- Карточки непрозрачные -->
+    <color name="textCard">#F3F4F4</color>          <!-- Текст карточки -->
+
+    <color name="transparent">#00000000</color>     <!-- Элементы прозрачный-->
+    <color name="item">#4F0372BC</color>            <!-- Элементы полупрозрачный-->
+    <color name="item_trans">#3C024F83</color>      <!-- Элементы полупрозрачный -->
+    <color name="item_trans_m">#00024F83</color>    <!-- Элементы прозрачный activity_main -->
+    <color name="item_sep">#58B6BF</color>          <!-- Разделитель элементов -->
+
+    <color name="week">#F58282</color>              <!-- Цвет текста Недели -->
+
+    <color name="groundW">#BA015A45</color>
+    <color name="gray_200">#BADBDBDB</color>
+    <color name="gray">#BA979898</color>
+    <color name="test">#D8C59C</color>
+    <color name="offset">#F3FB03</color>
+
+    <!-- График -->
+    <color name="bottom_color">#D400219D</color>
+    <color name="top_color">#5EFDFF37</color>
+<!--    <color name="line_graph">#A4FAFA</color>-->
+<!--    <color name="point_graph">#FFFFFF</color>-->
+<!--    <color name="line_dash">#5C8CD5</color>-->
+
+    <color name="blue">#0000FF</color>
+    <color name="blue_50">#FFE1F5FE</color>
+    <color name="blue_200">#FF81D4FA</color>
+    <color name="blue_600">#FF039BE5</color>
+    <color name="blue_800">#015DA6</color>
+    <color name="blue_900">#01579B</color>
+</resources>

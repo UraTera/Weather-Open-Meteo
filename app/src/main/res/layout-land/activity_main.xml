@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sky5_h"
+    tools:context=".MainActivity"
+    tools:ignore="HardcodedText">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lineToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tool_bar_height"
+        android:background="@color/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="@string/city"
+            android:textColor="@color/textM"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/tvUpdate"
+            style="@style/text_small.tab"
+            android:layout_marginEnd="16dp"
+            android:text="@string/time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/progressBar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <com.tera.progress.ProgressBarAnim
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="0dp"
+            android:padding="9dp"
+            app:itemColor="@color/white"
+            app:itemStyle="arrow"
+            app:layout_constraintEnd_toStartOf="@+id/imSetting"
+            app:layout_constraintBottom_toBottomOf="@id/imSetting"
+            app:layout_constraintTop_toTopOf="@id/imSetting" />
+
+        <ImageView
+            android:id="@+id/imSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/setting"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_settings"
+            tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCurrent"
+        android:layout_width="450dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/item"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineToolBar"
+        tools:ignore="TextSizeCheck">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lineCurrent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+            tools:ignore="TextSizeCheck">
+
+            <TextClock
+                android:id="@+id/tcTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:format24Hour="H:mm"
+                android:textColor="@color/clockColor"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RelativeOverlap,TextContrastCheck" />
+
+            <TextClock
+                android:id="@+id/tcDate"
+                style="@style/text.tab"
+                android:layout_marginTop="4dp"
+                android:format24Hour="d LLL"
+                app:layout_constraintStart_toStartOf="@+id/tcTime"
+                app:layout_constraintTop_toBottomOf="@+id/tcTime"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvWeek"
+                style="@style/text.tab"
+                android:layout_marginStart="4dp"
+                android:text="@string/week"
+                app:layout_constraintStart_toEndOf="@+id/tcDate"
+                app:layout_constraintTop_toTopOf="@+id/tcDate"
+                tools:ignore="TextContrastCheck" />
+
+            <ImageView
+                android:id="@+id/imWeather"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/todo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/none"
+                android:textColor="@color/textM"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/imWeather"
+                app:layout_constraintStart_toEndOf="@+id/tcTime"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RelativeOverlap,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvMaxMin"
+                style="@style/text.tab"
+                android:gravity="center"
+                android:text="@string/none"
+                app:layout_constraintEnd_toEndOf="@+id/tvTemp"
+                app:layout_constraintStart_toStartOf="@+id/tvTemp"
+                app:layout_constraintTop_toBottomOf="@+id/tvTemp"
+                tools:ignore="TextContrastCheck" />
+
+            <!-- Восход -->
+            <TextView
+                android:id="@+id/tvSunrise"
+                style="@style/text_small.tab"
+                android:layout_marginTop="16dp"
+                android:text="@string/sunrise"
+                app:layout_constraintStart_toStartOf="@+id/tcTime"
+                app:layout_constraintTop_toBottomOf="@+id/tcDate"
+                tools:ignore="TextContrastCheck" />
+
+            <!-- Закат -->
+            <TextView
+                android:id="@+id/tvSunset"
+                style="@style/text_small.tab"
+                android:layout_marginTop="4dp"
+                android:paddingBottom="20dp"
+                android:text="@string/sunset"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tcTime"
+                app:layout_constraintTop_toBottomOf="@+id/tvSunrise"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvCondition"
+                style="@style/text.tab"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="end"
+                android:maxWidth="300dp"
+                android:text="@string/none"
+                app:layout_constraintBottom_toBottomOf="@+id/tvSunrise"
+                app:layout_constraintEnd_toEndOf="@+id/imWeather"
+                tools:ignore="TextContrastCheck" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvForecast1"
+        style="@style/title_rc.tab"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/forecast_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardCurrent"
+        tools:ignore="RtlSymmetry,TextContrastCheck" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvForecast1">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <com.tera.weather_open_meteo.LineChart
+                android:id="@+id/lineChart"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                app:line_fillingShow="true"
+                app:line_fillingStyle="gradient"
+                app:line_fillingTopColor="@color/top_color"
+                app:line_fillingBottomColor="@color/bottom_color"
+                app:line_lineLength="80dp"
+                app:line_markZeroShow="true"
+                app:line_textSize="16sp"
+                app:line_textAxisSize="14sp"
+                app:line_textColor="@color/white"
+                app:line_textAxisColor="@color/white"/>
+
+        </HorizontalScrollView>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvForecast6"
+        style="@style/title_rc.tab"
+        android:layout_marginTop="4dp"
+        android:text="@string/forecast_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardLine"
+        tools:ignore="RtlSymmetry,TextContrastCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcDays"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvForecast6"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:itemCount="6"
+        tools:listitem="@layout/item_days" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

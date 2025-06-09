@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="app_widget_description">Телефон</string>
+    <string name="app_widget_tab_description">Планшет</string>
+
+    <string name="city">Город</string>
+    <string name="no_net">Нет подключения к Интернет!</string>
+    <string name="no_gps">Местоположение отключено!</string>
+    <string name="enable_gps">Включить определение местоположения?</string>
+    <string name="error_connect">Ошибка подключения!</string>
+    <string name="updates">Обновления</string>
+    <string name="period_update">Период обновления меньше</string>
+    <string name="history_clear">История очищена</string>
+
+    <!-- Настройка -->
+    <string name="setting">Настройка</string>
+    <string name="set_period">Прериод обновления виджета</string>
+
+    <string-array name="period_array">
+        <item>15 мин.</item>
+        <item>30 мин.</item>
+        <item>1 час</item>
+        <item>3 часа</item>
+        <item>6 часов</item>
+        <item>12 часов</item>
+        <item>24 часа</item>
+    </string-array>
+
+    <string name="font_clock">Шрифт часов</string>
+
+    <string-array name="font_array">
+        <item>Обычный</item>
+        <item>Курсив</item>
+        <item>Жирный</item>
+        <item>Жирный курсив</item>
+        <item>LED</item>
+        <item>LED курсив</item>
+    </string-array>
+
+    <!-- Погода -->
+    <string name="forecast_1">Почасовой прогноз</string>
+    <string name="forecast_6">Прогноз на 6 дней</string>
+    <string name="humidity">Влажность:</string>
+    <string name="sunrise">Восход:</string>
+    <string name="sunset">Закат:</string>
+
+
+    <string name="units">Единицы измерения</string>
+    <string name="unit_temp_text">Температура</string>
+    <string name="unit_press_text">Давление</string>
+    <string name="unit_wind_text">Скорость ветра</string>
+
+    <!-- Давление -->
+    <string name="pressure">Давление:</string>
+    <string name="unit_press_mmHg">мм.рт.ст</string>
+    <string name="unit_press_hpa">гПа"</string>
+    <string name="unit_press_mbr">мбар"</string>
+
+    <!-- Ветер -->
+    <string name="wind">Ветер:</string>
+    <string name="unit_wind_kmh">км/ч</string>
+    <string name="unit_wind_mc">м/с</string>
+    <string name="unit_wind_mlh">миль/ч</string>
+
+    <!-- Направление ветра-->
+    <string name="ne">СВ</string>
+    <string name="e">В</string>
+    <string name="se">ЮВ</string>
+    <string name="s">Ю</string>
+    <string name="sw">ЮЗ</string>
+    <string name="w">З</string>
+    <string name="nw">СЗ</string>
+    <string name="n">С</string>
+
+    <!-- Описание погоды -->
+    <string name="wmo0">Ясно</string>
+    <string name="wmo1">"Малооблачно"</string>
+    <string name="wmo2">Переменная облачность</string>
+    <string name="wmo3">Облачно</string>
+    <string name="wmo45">Туман</string>
+    <string name="wmo48">Туман и иней</string>
+    <string name="wmo51">Моросящий дождь</string>
+    <string name="wmo53">Морось</string>
+    <string name="wmo55">Интенсивная морось</string>
+    <string name="wmo56">Замерзающая морось</string>
+    <string name="wmo57">Замерзающая морось</string>
+    <string name="wmo61">Слабый дождь</string>
+    <string name="wmo63">Умеренный дождь</string>
+    <string name="wmo65">Сильный дождь</string>
+    <string name="wmo66">Ледяной дождь</string>
+    <string name="wmo67">Сильный ледяной дождь</string>
+    <string name="wmo71">Небольшой снег</string>
+    <string name="wmo73">Умеренный снег</string>
+    <string name="wmo75">Сильный снегопад</string>
+    <string name="wmo77">Снежная крупа </string>
+    <string name="wmo80">Небольшие ливни</string>
+    <string name="wmo81">Умеренные ливни</string>
+    <string name="wmo82">Сильные ливни</string>
+    <string name="wmo85">Слабый снег</string>
+    <string name="wmo86">Сильный снегопад</string>
+    <string name="wmo95">Гроза</string>
+    <string name="wmo96">Гроза с градом</string>
+    <string name="wmo99">Гроза с градом</string>
+
+
+</resources>

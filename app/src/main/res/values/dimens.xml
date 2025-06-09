@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="tool_bar_height">50dp</dimen>
+    <dimen name="margin_card_hor">16dp</dimen>
+    <dimen name="radius_card">5dp</dimen>
+    <dimen name="shadow_card">5dp</dimen>
+
+    <!-- График -->
+    <dimen name="width_im_list">70dp</dimen>
+    <dimen name="height_im_list">50dp</dimen>
+
+    <!-- Размеры Телефон -->
+    <dimen name="width_tel">250dp</dimen>
+    <dimen name="height_tel">110dp</dimen>
+
+    <!-- Размеры Планшет -->
+    <dimen name="width_tab">180dp</dimen>
+    <dimen name="height_tab">180dp</dimen>
+
+    <!--    1 – 40-->
+    <!--    2 – 110-->
+    <!--    3 – 180-->
+    <!--    4 – 250-->
+    <!--    5 – 320-->
+
+</resources>

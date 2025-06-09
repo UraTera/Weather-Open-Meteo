@@ -79,5 +79,5 @@ public final var dataAxisString: ArrayList<String>?
 public final var icons: ArrayList<Int>?
 public final var colors: ArrayList<Int>?
 ```
-
+Without using the dataValueString method, the chart displays nothing.
 

@@ -72,3 +72,12 @@ line_textSize	|Value text size        |12sp
 line_textShow	|Show value text        |true
 line_textString	|Value text with unit   |true
 
+Methods:
+```
+public final var dataValueString: ArrayList<String>?
+public final var dataAxisString: ArrayList<String>?
+public final var icons: ArrayList<Int>?
+public final var colors: ArrayList<Int>?
+```
+
+

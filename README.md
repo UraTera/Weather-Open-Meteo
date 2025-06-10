@@ -15,7 +15,7 @@ To use the ready-made library, add the dependency:
 ```
 dependencies {
 
-    implementation("io.github.uratera:line_chart:1.0.1")
+    implementation("io.github.uratera:line_chart:1.0.2")
 }
 ```
 

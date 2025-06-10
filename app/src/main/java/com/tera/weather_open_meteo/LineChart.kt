@@ -35,26 +35,26 @@ class LineChart(
 
     companion object {
 
-        const val AXIS_WIDTH = 4f // /2 - 2dp
+        const val AXIS_WIDTH = 2f
 
         const val BOTTOM_COLOR = -13943715
         const val TOP_COLOR = -4939179
 
         const val FRAME_COLOR = -7105388
         const val HEIGHT_MIN = 150f
-        const val ICON_SIZE = 100f // 36dp
+        const val ICON_SIZE = 36f
 
         const val LINE_COLOR = -10689051
-        const val LINE_LENGTH = 125f // 45dp
-        const val LINE_WIDTH = 8f // /2 - 3dp
+        const val LINE_LENGTH = 45f
+        const val LINE_WIDTH = 3f
 
-        const val MARK_WIDTH = 6f // /2 - 2dp
+        const val MARK_WIDTH = 4f
 
         const val TEXT_COLOR = Color.BLACK
-        const val TEXT_SIZE = 33f // 12 sp
+        const val TEXT_SIZE = 12f
 
         const val POINT_COLOR = -4787972
-        const val POINT_RADIUS = 12f // / 2 - 4dp
+        const val POINT_RADIUS = 5f
     }
 
     private val mPaintFrame = Paint()
@@ -161,7 +161,7 @@ class LineChart(
 
             mAxisColor = getColor(R.styleable.LineChart_line_axisColor, LINE_COLOR)
             mAxisShow = getBoolean(R.styleable.LineChart_line_axisShow, true)
-            mAxisWidth = getDimension(R.styleable.LineChart_line_axisWidth, AXIS_WIDTH)
+            mAxisWidth = getDimension(R.styleable.LineChart_line_axisWidth, dpToPx(AXIS_WIDTH))
 
             mChartShow = getBoolean(R.styleable.LineChart_line_chartShow, true)
             mColorBot = getColor(R.styleable.LineChart_line_fillingBottomColor, BOTTOM_COLOR)
@@ -170,35 +170,35 @@ class LineChart(
             mFillingStyle = getInt(R.styleable.LineChart_line_fillingStyle, 0)
 
             mIconShow = getBoolean(R.styleable.LineChart_line_iconShow, true)
-            mIconSize = getDimension(R.styleable.LineChart_line_iconSize, ICON_SIZE).toInt()
+            mIconSize = getDimension(R.styleable.LineChart_line_iconSize, dpToPx(ICON_SIZE)).toInt()
             mIconTop = getBoolean(R.styleable.LineChart_line_iconTop, true)
 
             mLabelColor = getColor(R.styleable.LineChart_line_labelColor, TEXT_COLOR)
-            mLabelSize = getDimension(R.styleable.LineChart_line_labelSize, TEXT_SIZE)
+            mLabelSize = getDimension(R.styleable.LineChart_line_labelSize, dpToPx(TEXT_SIZE))
             mLabelText = getString(R.styleable.LineChart_line_labelText)
 
             mLineColor = getColor(R.styleable.LineChart_line_lineColor, LINE_COLOR)
-            mLineLength = getDimension(R.styleable.LineChart_line_lineLength, LINE_LENGTH).toInt()
-            mLineWidth = getDimension(R.styleable.LineChart_line_lineWidth, LINE_WIDTH)
+            mLineLength = getDimension(R.styleable.LineChart_line_lineLength, dpToPx(LINE_LENGTH)).toInt()
+            mLineWidth = getDimension(R.styleable.LineChart_line_lineWidth, dpToPx(LINE_WIDTH))
             mLineZero = getBoolean(R.styleable.LineChart_line_lineStartZero, false)
 
             mMarkAllHeight = getBoolean(R.styleable.LineChart_line_markZeroAllHeight, false)
             mMarkColor = getColor(R.styleable.LineChart_line_markZeroColor, LINE_COLOR)
             mMarkShow = getBoolean(R.styleable.LineChart_line_markZeroShow, false)
-            mMarkWidth = getDimension(R.styleable.LineChart_line_markZeroWidth, MARK_WIDTH)
+            mMarkWidth = getDimension(R.styleable.LineChart_line_markZeroWidth, dpToPx(MARK_WIDTH))
 
             mPointColor = getColor(R.styleable.LineChart_line_pointColor, POINT_COLOR)
-            mPointRadius = getDimension(R.styleable.LineChart_line_pointRadius, POINT_RADIUS)
+            mPointRadius = getDimension(R.styleable.LineChart_line_pointRadius, dpToPx(POINT_RADIUS))
             mPointShow = getBoolean(R.styleable.LineChart_line_pointShow, true)
 
             mTextAxisColor = getColor(R.styleable.LineChart_line_textAxisColor, TEXT_COLOR)
-            mTextAxisSize = getDimension(R.styleable.LineChart_line_textAxisSize, TEXT_SIZE)
+            mTextAxisSize = getDimension(R.styleable.LineChart_line_textAxisSize, dpToPx(TEXT_SIZE))
             mTextAxisShow = getBoolean(R.styleable.LineChart_line_textAxisShow, true)
             mTextAxisTop = getBoolean(R.styleable.LineChart_line_textAxisTop, false)
 
             mTextColor = getColor(R.styleable.LineChart_line_textColor, TEXT_COLOR)
             mTextOnLine = getBoolean(R.styleable.LineChart_line_textOnLine, true)
-            mTextSize = getDimension(R.styleable.LineChart_line_textSize, TEXT_SIZE)
+            mTextSize = getDimension(R.styleable.LineChart_line_textSize, dpToPx(TEXT_SIZE))
             mTextShow = getBoolean(R.styleable.LineChart_line_textShow, true)
             mTextString = getBoolean(R.styleable.LineChart_line_textString, true)
 
@@ -214,6 +214,10 @@ class LineChart(
 
         if (isInEditMode)
             setEditMode()
+    }
+
+    private fun dpToPx(dp: Float): Float {
+        return dp * resources.displayMetrics.density
     }
 
     private fun initPaint() {
@@ -325,7 +329,7 @@ class LineChart(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         // Рамка
-//        drawFrame(canvas)
+        //drawFrame(canvas)
 
         if (mArrayDataString == null) return
 
@@ -345,7 +349,6 @@ class LineChart(
 
             if (mLabelText != null)
                 drawLabel(canvas)
-
         }
 
         if (mTextShow)
@@ -453,10 +456,10 @@ class LineChart(
         val offset = mPointRadius + mTextOffset / 2
 
         var y: Float
-        if (!mChartShow)
-            y = mFailedTop + mFieldText * 0.75f
+        y = if (!mChartShow)
+            mFailedTop + mFieldText * 0.75f
         else
-            y = mMaxValue
+            mMaxValue
 
         for (i in 0..<sizeArray) {
             val x = mArrayValuePos[i].x
@@ -597,7 +600,6 @@ class LineChart(
     private fun drawLabel(canvas: Canvas) {
         val x = mOffsetStart + 30
         val y = mFailedTop + mFieldLabel - 10
-        val text = mLabelText
         canvas.drawText(mLabelText!!, x, y, mPaintLabel)
     }
 

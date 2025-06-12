@@ -180,7 +180,8 @@ class MainActivity : AppCompatActivity() {
     // Загрузка диаграммы
     fun setChart3(
         context: Context, listTime: ArrayList<String>,
-        listTemp: ArrayList<String>, listIcon: ArrayList<Int>
+        listTemp: ArrayList<String>, listIcon: ArrayList<Int>,
+        keyRestore: Boolean
     ) {
         val view = context as Activity
         val lineChart = view.findViewById<LineChart>(R.id.lineChart)
@@ -188,6 +189,8 @@ class MainActivity : AppCompatActivity() {
         lineChart.dataAxisString = listTime
         lineChart.dataValueString = listTemp
         lineChart.icons = listIcon
+
+        if (keyRestore) return
 
         val timeStr = gson.toJson(listTime)
         val tempStr = gson.toJson(listTemp)
@@ -279,7 +282,7 @@ class MainActivity : AppCompatActivity() {
         val listIcon = gson.fromJson<ArrayList<Int>>(iconStr, typeInt)
 
         if (listTime != null && listTemp != null && listIcon != null)
-            setChart3(this, listTime, listTemp, listIcon)
+            setChart3(this, listTime, listTemp, listIcon, true)
 
         numFont = sp.getInt(MyConst.NUM_FONT, 0)
         setFontClock()

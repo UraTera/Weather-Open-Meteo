@@ -353,7 +353,7 @@ class Weather(val context: Context) {
         val time = listTime[indexZero]
         listTime[indexZero] = "$dayWeek $time"
 
-        activity.setChart3(context, listTime, listTemp, listIcon)
+        activity.setChart3(context, listTime, listTemp, listIcon, false)
     }
 
     private fun daysWeather(obj: JSONObject) {

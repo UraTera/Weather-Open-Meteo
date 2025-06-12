@@ -15,7 +15,7 @@ To use the ready-made library, add the dependency:
 ```
 dependencies {
 
-    implementation("io.github.uratera:line_chart:1.0.1")
+    implementation("io.github.uratera:line_chart:1.0.2")
 }
 ```
 
@@ -46,7 +46,7 @@ line_fillingTopColor	|Fill color top         |uniform
 line_fillingShow	|Show fill              |false
 line_fillingStyle	|Fill style (uniform, gradient) |uniform
 line_iconShow	|Show icons             |true
-line_iconSize	|Icon size              |12sp
+line_iconSize	|Icon size              |36sp
 line_iconTop	|Icons on top           |true
 line_labelColor	|Label text color       |black
 line_labelSize	|Label text size        |12sp
@@ -58,9 +58,9 @@ line_lineStartZero	|Start from zero        |false
 line_markZeroAllHeight	|Full height zero label |false
 line_markZeroColor	|Zero mark color        |light blue
 line_markZeroShow	|Show zero mark         |false
-line_markZeroWidth	|Zero mark width        |2dp
+line_markZeroWidth	|Zero mark width        |4dp
 line_pointColor	|Points color           |light blue
-line_pointRadius	|Points radius          |4dp
+line_pointRadius	|Points radius          |5dp
 line_pointShow	|Show point s           |true
 line_textAxisColor	|Axis text color        |black
 line_textAxisShow	|Show axis text         |true

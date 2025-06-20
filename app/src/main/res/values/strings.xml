@@ -46,6 +46,15 @@
         <item>LED italic</item>
     </string-array>
 
+    <!-- Дабавить место -->
+    <string name="remove">Removal!</string>
+    <string name="remove_no">Delete location %s unable.</string>
+    <string name="remove_sel">Delete selected items?</string>
+    <string name="remove_all">Clear list?</string>
+    <string name="history">Search history</string>
+    <string name="add_location">Add location</string>
+    <string name="search_address">Address search</string>
+
     <!-- Погода -->
     <string name="forecast_1">Hourly forecast</string>
     <string name="forecast_6">Forecast for 6 days</string>

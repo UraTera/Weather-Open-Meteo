@@ -152,8 +152,8 @@ class Weather(val context: Context) {
         //Log.d("myLogs", "getWeatherWidget 1, timeDiff: $timeDiff")
 
         if (timeDiff < period && !keyButton) {
-//            val message = context.getString(R.string.period_update) + " $period min"
-//            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+            //val message = context.getString(R.string.period_update) + " $period min"
+            //Toast.makeText(context, message, Toast.LENGTH_LONG).show()
             activity.setProgressBar(context, id, num, false)
             return
         }

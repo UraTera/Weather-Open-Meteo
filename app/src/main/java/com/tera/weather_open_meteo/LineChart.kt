@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.content.withStyledAttributes
@@ -36,11 +37,9 @@ class LineChart(
     companion object {
 
         const val AXIS_WIDTH = 2f
-
         const val BOTTOM_COLOR = -13943715
         const val TOP_COLOR = -4939179
 
-        const val FRAME_COLOR = -7105388
         const val HEIGHT_MIN = 150f
         const val ICON_SIZE = 36f
 
@@ -57,7 +56,6 @@ class LineChart(
         const val POINT_RADIUS = 5f
     }
 
-    private val mPaintFrame = Paint()
     private val mPaintLine = Paint()
     private val mPaintPoint = Paint()
     private val mPaintMark = Paint() // Test
@@ -75,8 +73,6 @@ class LineChart(
     private var mArrayIntAxis: ArrayList<Int>? = null
 
     private val mArrayValuePos = ArrayList<ValuePos>()
-
-    private var mFrameColor = FRAME_COLOR
 
     private var mIndexColor = 0
     private var mIndexText = 0
@@ -164,6 +160,7 @@ class LineChart(
             mAxisWidth = getDimension(R.styleable.LineChart_line_axisWidth, dpToPx(AXIS_WIDTH))
 
             mChartShow = getBoolean(R.styleable.LineChart_line_chartShow, true)
+
             mColorBot = getColor(R.styleable.LineChart_line_fillingBottomColor, BOTTOM_COLOR)
             mColorTop = getColor(R.styleable.LineChart_line_fillingTopColor, TOP_COLOR)
             mFillingShow = getBoolean(R.styleable.LineChart_line_fillingShow, false)
@@ -174,7 +171,7 @@ class LineChart(
             mIconTop = getBoolean(R.styleable.LineChart_line_iconTop, true)
 
             mLabelColor = getColor(R.styleable.LineChart_line_labelColor, TEXT_COLOR)
-            mLabelSize = getDimension(R.styleable.LineChart_line_labelSize, dpToPx(TEXT_SIZE))
+            mLabelSize = getDimension(R.styleable.LineChart_line_labelSize, spToPx())
             mLabelText = getString(R.styleable.LineChart_line_labelText)
 
             mLineColor = getColor(R.styleable.LineChart_line_lineColor, LINE_COLOR)
@@ -192,13 +189,13 @@ class LineChart(
             mPointShow = getBoolean(R.styleable.LineChart_line_pointShow, true)
 
             mTextAxisColor = getColor(R.styleable.LineChart_line_textAxisColor, TEXT_COLOR)
-            mTextAxisSize = getDimension(R.styleable.LineChart_line_textAxisSize, dpToPx(TEXT_SIZE))
+            mTextAxisSize = getDimension(R.styleable.LineChart_line_textAxisSize, spToPx())
             mTextAxisShow = getBoolean(R.styleable.LineChart_line_textAxisShow, true)
             mTextAxisTop = getBoolean(R.styleable.LineChart_line_textAxisTop, false)
 
             mTextColor = getColor(R.styleable.LineChart_line_textColor, TEXT_COLOR)
             mTextOnLine = getBoolean(R.styleable.LineChart_line_textOnLine, true)
-            mTextSize = getDimension(R.styleable.LineChart_line_textSize, dpToPx(TEXT_SIZE))
+            mTextSize = getDimension(R.styleable.LineChart_line_textSize, spToPx())
             mTextShow = getBoolean(R.styleable.LineChart_line_textShow, true)
             mTextString = getBoolean(R.styleable.LineChart_line_textString, true)
 
@@ -217,13 +214,15 @@ class LineChart(
     }
 
     private fun dpToPx(dp: Float): Float {
-        return dp * resources.displayMetrics.density
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics)
+    }
+
+    private fun spToPx(): Float {
+        val sp = TEXT_SIZE
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, resources.displayMetrics)
     }
 
     private fun initPaint() {
-        mPaintFrame.color = mFrameColor
-        mPaintFrame.style = Paint.Style.STROKE
-        mPaintFrame.strokeWidth = 4f
 
         mPaintMark.color = mMarkColor
         mPaintMark.style = Paint.Style.STROKE
@@ -328,13 +327,10 @@ class LineChart(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        // Рамка
-        //drawFrame(canvas)
-
         if (mArrayDataString == null) return
 
         if (mChartShow) {
-            // Заливк
+            // Заливка
             if (mFillingShow)
                 drawFilling(canvas)
 
@@ -362,15 +358,6 @@ class LineChart(
 
         if (mMarkShow)
             drawMarkZero(canvas)
-    }
-
-    // Рамка
-    private fun drawFrame(canvas: Canvas) {
-        val x1 = mOffsetStart
-        val y1 = mFailedTop
-        val x2 = x1 + mChartWidth
-        val y2 = y1 + mChartHeight
-        canvas.drawRect(x1, y1, x2, y2, mPaintFrame)
     }
 
     // Заливка
@@ -455,8 +442,7 @@ class LineChart(
 
         val offset = mPointRadius + mTextOffset / 2
 
-        var y: Float
-        y = if (!mChartShow)
+        var y = if (!mChartShow)
             mFailedTop + mFieldText * 0.75f
         else
             mMaxValue

@@ -37,6 +37,16 @@
         <item>LED курсив</item>
     </string-array>
 
+    <!-- Дабавить место -->
+    <string name="remove">Удаление!</string>
+    <string name="remove_no">Удалить местоположение %s невозможно.</string>
+    <string name="remove_sel">Удалить выбранные элементы?</string>
+    <string name="remove_all">Очистить список?</string>
+    <string name="history">История поисков</string>
+    <string name="add_location">Добавить место</string>
+    <string name="search_address">Поиск адреса</string>
+
+
     <!-- Погода -->
     <string name="forecast_1">Почасовой прогноз</string>
     <string name="forecast_6">Прогноз на 6 дней</string>

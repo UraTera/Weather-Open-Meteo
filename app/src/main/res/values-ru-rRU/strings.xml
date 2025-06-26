@@ -39,12 +39,14 @@
 
     <!-- Дабавить место -->
     <string name="remove">Удаление!</string>
-    <string name="remove_no">Удалить местоположение %s невозможно.</string>
-    <string name="remove_sel">Удалить выбранные элементы?</string>
-    <string name="remove_all">Очистить список?</string>
+    <string name="remove_no">Удалить место %s невозможно.</string>
+    <string name="remove_sel">Удалить выбранные места?</string>
+    <string name="remove_all">Очистить историю поиска?\n\nДля выбора места, нажмите и удерживайте любой элемент спска.</string>
     <string name="history">История поисков</string>
     <string name="add_location">Добавить место</string>
     <string name="search_address">Поиск адреса</string>
+    <string name="cancel">Отмена</string>
+    <string name="warning">Внимание!</string>
 
 
     <!-- Погода -->

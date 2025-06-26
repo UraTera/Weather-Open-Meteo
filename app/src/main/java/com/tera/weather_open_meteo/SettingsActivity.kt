@@ -187,7 +187,7 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        sp.edit() {
+        sp.edit {
             putInt(MyConst.NUM_TEMP, numTemp)
             putInt(MyConst.NUM_PRESS, numPress)
             putInt(MyConst.NUM_WIND, numWind)

@@ -32,6 +32,20 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="RtlSymmetry" />
 
+        <ImageView
+            android:id="@+id/imList"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/tool_bar_height"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/todo"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintStart_toEndOf="@+id/tvCity"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvCity"
+            app:srcCompat="@drawable/ic_search"
+            tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
         <TextView
             android:id="@+id/tvUpdate"
             style="@style/text_small.tab"

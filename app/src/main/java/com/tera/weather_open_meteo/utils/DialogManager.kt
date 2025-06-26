@@ -2,47 +2,62 @@ package com.tera.weather_open_meteo.utils
 
 import android.app.AlertDialog
 import android.content.Context
-import android.widget.EditText
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.InsetDrawable
+import androidx.core.graphics.toColorInt
 import com.tera.weather_open_meteo.R
 
 object DialogManager {
 
-    fun locationSettingsDialog(context: Context, listener: Listener){
+    // Диалог влюченя GPS
+    fun locationSettingsDialog(context: Context, listener: Listener) {
         val title = context.getString(R.string.no_gps)
         val message = context.getString(R.string.enable_gps)
-        val icon = R.drawable.ic_warning
+        val cancel = context.getString(R.string.cancel)
+
         val builder = AlertDialog.Builder(context)
         val dialog = builder.create()
-        dialog.setIcon(icon)
+        val rounded = getRounded()
+        dialog.window!!.setBackgroundDrawable(rounded)
+        dialog.setIcon(R.drawable.ic_warning_red)
         dialog.setTitle(title)
         dialog.setMessage(message)
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK"){ _,_ ->
-            listener.onClick(null)
+        dialog.setCancelable(false)
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK") { _, _ ->
+            listener.onClick()
             dialog.dismiss()
         }
-        dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Отмена"){ _,_ ->
+        dialog.setButton(AlertDialog.BUTTON_NEGATIVE, cancel) { _, _ ->
             dialog.dismiss()
         }
         dialog.show()
     }
 
-    interface Listener{
-        fun onClick(name: String?)
+    interface Listener {
+        fun onClick()
     }
 
-    fun messageDialog(context: Context, message: String){
-        val icon = R.drawable.ic_history_blue
-        val title = context.getString(R.string.updates)
+    fun dialogMessage(context: Context, icon: Int, title: String, message: String) {
         val builder = AlertDialog.Builder(context)
+        builder.setTitle(title)
+            .setIcon(icon)
+            .setMessage(message)
+            .setPositiveButton("OK") { _, _ ->
+            }
         builder.setCancelable(false)
         val dialog = builder.create()
-        dialog.setIcon(icon)
-        dialog.setTitle(title)
-        dialog.setMessage(message)
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK"){ _,_ ->
-            dialog.dismiss()
-        }
-
+        val rounded = getRounded()
+        dialog.window!!.setBackgroundDrawable(rounded)
         dialog.show()
     }
+
+    fun getRounded (): InsetDrawable {
+        val drawable = GradientDrawable()
+        drawable.shape = GradientDrawable.RECTANGLE
+        drawable.setColor("#FFFFFF".toColorInt())
+        drawable.cornerRadius = 50f
+        val insetDrawable = InsetDrawable(drawable, 40)
+        return insetDrawable
+    }
+
 }

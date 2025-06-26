@@ -16,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -23,10 +24,12 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.tera.progress.ProgressBarAnim
 import com.tera.weather_open_meteo.adapters.AdapterDays
+import com.tera.weather_open_meteo.city.ListActivity
 import com.tera.weather_open_meteo.databinding.ActivityMainBinding
+import com.tera.weather_open_meteo.models.CityModel
 import com.tera.weather_open_meteo.models.CurrentModel
 import com.tera.weather_open_meteo.models.DaysModel
-import com.tera.weather_open_meteo.utils.ConvertWeather
+import com.tera.weather_open_meteo.utils.ConvertDate
 import com.tera.weather_open_meteo.utils.MyConst
 import com.tera.weather_open_meteo.utils.MyLocation
 import com.tera.weather_open_meteo.utils.Weather
@@ -42,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     private var widgetId = 0
     private var widgetNum = 0
     private var keyUpdate = true
+
     private var launcherSet: ActivityResultLauncher<Intent>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        initButtons()
+        initParams()
         setOrientation()
         // Кнопка Back
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
@@ -94,22 +98,72 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        getWeather()
         restoreDate()
-        if (keyUpdate) {
-            setProgressBar(this, 0, 0, true)
-            Weather(this).getWeatherMain()
+    }
+
+    private fun getWeather(){
+        val keyList = intent.getBooleanExtra(MyConst.KEY_LIST, false)
+
+        if (keyList) {
+            val listStr = intent.getStringExtra(MyConst.LIST_CITY)
+            val cityPos = intent.getIntExtra(MyConst.CITY_POS, 0)
+            if (cityPos == 0)
+                setIcon()
+            if (listStr != null) {
+                val list = gson.fromJson(listStr, CityModel::class.java)
+                val listModel = ArrayList<CityModel>()
+                listModel.add(list)
+                Weather(this).getWeatherCity(listModel)
+            }
+        } else {
+            restoreDate()
+            if (keyUpdate) {
+                setProgressBar(this, 0, 0, true)
+                setIcon()
+                Weather(this).getWeatherMain()
+            }
         }
     }
 
-    private fun initButtons() = with(binding) {
+    private fun setIcon(){
+        val img = ResourcesCompat.getDrawable(resources, R.drawable.ic_location_grey, null)
+        val size = resources.getDimension(R.dimen.icon_size).toInt()
+        img?.setBounds(0, 0, size, size)
+        binding.tvCity.setCompoundDrawables(img, null, null, null)
+    }
+
+    private fun initParams() = with(binding) {
         progressBar.animation = false
 
         progressBar.setOnClickListener {
-            //Weather().getWeatherMain(this@MainActivity)
+            //Weather(this@MainActivity).getWeatherMain()
+        }
+        imList.setOnClickListener {
+            val list = getHomeList()
+            val listHomeStr = gson.toJson(list)
+            val intent = Intent(this@MainActivity, ListActivity::class.java)
+            intent.putExtra(MyConst.LIST_HOME, listHomeStr)
+            startActivity(intent)
         }
         imSetting.setOnClickListener {
             openSetting()
         }
+    }
+
+    // Установить домашний список
+    private fun getHomeList() : CityModel {
+        val sp = this.getSharedPreferences(MyConst.SETTING, Context.MODE_PRIVATE)
+        val cityHome = sp.getString(MyConst.CITY, "").toString()
+        val region = sp.getString(MyConst.REGION, "").toString()
+        val latitude = sp.getFloat(MyConst.LATITUDE, 0f).toDouble()
+        val longitude = sp.getFloat(MyConst.LONGITUDE, 0f).toDouble()
+        val timeZone = sp.getString(MyConst.TIME_ZONE, "").toString()
+        val temp = sp.getString(MyConst.TEMP, "").toString()
+        val icon = sp.getInt(MyConst.ICON, 0)
+        val date = ConvertDate.dateTimeZone(timeZone)
+
+        return CityModel(cityHome, region, date,latitude, longitude, timeZone, temp, icon)
     }
 
     // Окно настроек
@@ -137,7 +191,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Текущая погода
-    fun seCurrentView(context: Context, list: CurrentModel) {
+    fun setCurrentView(context: Context, list: CurrentModel) {
         val view = context as Activity
         view.findViewById<TextView>(R.id.tvCity).text = list.city
         view.findViewById<TextView>(R.id.tvTemp).text = list.currentTemp
@@ -149,8 +203,7 @@ class MainActivity : AppCompatActivity() {
         view.findViewById<ImageView>(R.id.imWeather).setImageResource(list.icon)
         val tvWeek = view.findViewById<TextView>(R.id.tvWeek)
 
-        val convert = ConvertWeather(context)
-        var nameDay = convert.getCurrentTime("EEE.")
+        var nameDay = ConvertDate.getCurrentTime("EEE.")
         nameDay = nameDay.replaceFirstChar { it.uppercase() }
 
         tvWeek.text = nameDay
@@ -164,8 +217,6 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.getColor(context, R.color.white)
 
         tvWeek.setTextColor(color)
-
-        //val currentStr = gson.toJson(list).toString()
     }
 
     // Также из виджетов
@@ -267,7 +318,7 @@ class MainActivity : AppCompatActivity() {
         val typeDays = object : TypeToken<ArrayList<DaysModel>>() {}.type
         val listDays = gson.fromJson<ArrayList<DaysModel>>(listDaysStr, typeDays)
 
-        if (listCurrent != null) seCurrentView(this, listCurrent)
+        if (listCurrent != null) setCurrentView(this, listCurrent)
         if (listDays.isNotEmpty()) setAdapterDays(this, listDays)
 
         val timeStr = sp.getString(MyConst.LIST_TIME, "")
@@ -288,16 +339,8 @@ class MainActivity : AppCompatActivity() {
         setFontClock()
     }
 
-    override fun onPause() {
-        super.onPause()
-//        val sp = getSharedPreferences(MyConst.SETTING, Context.MODE_PRIVATE)
-//        sp.edit() {
-//            clear()
-//        }
-    }
-
     private fun setOrientation() {
-        val diagonal = MyLocation.getScreenDiagonal(this)
+        val diagonal = ConvertDate.getScreenDiagonal(this)
         if (diagonal < 7)
             this.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LOCKED
         else
@@ -310,5 +353,7 @@ class MainActivity : AppCompatActivity() {
             finishAffinity()
         }
     }
+
+
 
 }

@@ -5,10 +5,8 @@
     <dimen name="margin_card_hor">16dp</dimen>
     <dimen name="radius_card">5dp</dimen>
     <dimen name="shadow_card">5dp</dimen>
-
-    <!-- График -->
-    <dimen name="width_im_list">70dp</dimen>
-    <dimen name="height_im_list">50dp</dimen>
+    <dimen name="gone_start">10dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
 
     <!-- Размеры Телефон -->
     <dimen name="width_tel">250dp</dimen>

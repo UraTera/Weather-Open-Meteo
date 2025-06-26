@@ -49,11 +49,14 @@
     <!-- Дабавить место -->
     <string name="remove">Removal!</string>
     <string name="remove_no">Delete location %s unable.</string>
-    <string name="remove_sel">Delete selected items?</string>
-    <string name="remove_all">Clear list?</string>
+    <string name="remove_sel">Delete selected locations?</string>
+    <string name="remove_all">Clear search history?\n\nTo select a location, tap and hold any item in the list.</string>
     <string name="history">Search history</string>
     <string name="add_location">Add location</string>
     <string name="search_address">Address search</string>
+    <string name="cancel">Cancel</string>
+    <string name="warning">Warning!</string>
+
 
     <!-- Погода -->
     <string name="forecast_1">Hourly forecast</string>
@@ -121,8 +124,6 @@
     <string name="wmo95">"Thunderstorm "</string>
     <string name="wmo96">Thunderstorm with slight hail</string>
     <string name="wmo99">Thunderstorm with slight hail</string>
-
-
 
 
 </resources>

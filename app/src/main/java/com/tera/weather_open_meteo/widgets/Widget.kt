@@ -86,7 +86,7 @@ class Widget : AppWidgetProvider() {
 
     // Получить погоду
     fun getWeather(context: Context, widgetID: Int, keyButton: Boolean) {
-        Weather(context).getWeatherWidget(widgetID, 1, keyButton)
+        Weather(context).getWeatherWidget(widgetID, 2, keyButton)
     }
 
     // Установить значения в View

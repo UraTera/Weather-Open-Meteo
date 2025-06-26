@@ -1,6 +1,5 @@
 package com.tera.weather_open_meteo.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

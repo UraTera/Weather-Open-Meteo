@@ -13,7 +13,6 @@ class ScreenReceiver() : BroadcastReceiver() {
         val sp = context.getSharedPreferences(MyConst.SETTING, Context.MODE_PRIVATE)
         val id = sp.getInt(MyConst.WIDGET_ID, 0)
         val num = sp.getInt(MyConst.WIDGET_NUM, 0)
-        //val time = MyLocation.getCurrentTime("H:mm:ss")
 
         if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
             updateWeather(context, id, num, true)

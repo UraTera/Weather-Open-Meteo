@@ -42,6 +42,7 @@ android {
 dependencies {
 
     implementation(files("libs/ProgressAnim.aar"))
+    implementation(files("libs/CheckBox.aar"))
 
     implementation(libs.volley)
     implementation(libs.gson)

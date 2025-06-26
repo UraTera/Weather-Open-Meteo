@@ -2,9 +2,6 @@ package com.tera.weather_open_meteo.utils
 
 import android.content.Context
 import com.tera.weather_open_meteo.R
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.math.roundToInt
 
 class ConvertWeather(private val context: Context) {
@@ -18,7 +15,7 @@ class ConvertWeather(private val context: Context) {
     }
 
     fun getMaxMinTemp(tMax: Float, tMin: Float, numTemp: Int ): String {
-        var res = ""
+        val res: String
         if (numTemp == 0){
             res = tMax.roundToInt().toString() + "/" + tMin.roundToInt().toString() + "°C"
         } else {
@@ -80,8 +77,7 @@ class ConvertWeather(private val context: Context) {
 
     // Направление ветра
     private fun getWindDir(dir: Int): String {
-        var wordDir = ""
-        wordDir = when (dir) {
+        val wordDir = when (dir) {
             in 22..67 -> context.getString(R.string.ne)    // северо-восток
             in 68..112 -> context.getString(R.string.e)    // восток
             in 113..157 -> context.getString(R.string.se)  // юго-восток
@@ -92,45 +88,6 @@ class ConvertWeather(private val context: Context) {
             else -> context.getString(R.string.n)                // север
         }
         return wordDir
-    }
-
-
-
-    // Текущее время
-    fun getCurrentTime(pattern: String): String {
-        val stf = SimpleDateFormat(pattern, Locale.getDefault())
-        return stf.format(Date()).toString()
-    }
-
-    // Номер дня недели
-    fun getNumDayWeek(time: String): Int {
-        val calendar = Calendar.getInstance()
-        val pattern = "yyyy-MM-dd"
-        val dateFormat = SimpleDateFormat(pattern, Locale.getDefault())
-        val date = dateFormat.parse(time)
-        val mls = date?.time
-        calendar.timeInMillis = mls!!
-        return calendar.get(Calendar.DAY_OF_WEEK)
-    }
-
-
-    // Формат Даты и времени
-    fun formatDate(date: String, format: String, field: String) : String{
-        val dayOfWeek = getFromDateTime(date, format, field)
-        return dayOfWeek.toString()
-    }
-
-    private fun getFromDateTime(dateTime: String, dateFormat: String, field: String): String? {
-        val input = SimpleDateFormat(dateFormat, Locale.getDefault())
-        val output = SimpleDateFormat(field, Locale.getDefault())
-        try {
-            val getAbbreviate = input.parse(dateTime)
-            return getAbbreviate?.let { output.format(it) }
-        } catch (e: ParseException) {
-            e.printStackTrace()
-        }
-
-        return null
     }
 
     // Состояние погоды

@@ -191,7 +191,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Текущая погода
-    fun setCurrentView(context: Context, list: CurrentModel) {
+    fun setCurrentWeather(context: Context, list: CurrentModel) {
         val view = context as Activity
         view.findViewById<TextView>(R.id.tvCity).text = list.city
         view.findViewById<TextView>(R.id.tvTemp).text = list.currentTemp
@@ -318,7 +318,7 @@ class MainActivity : AppCompatActivity() {
         val typeDays = object : TypeToken<ArrayList<DaysModel>>() {}.type
         val listDays = gson.fromJson<ArrayList<DaysModel>>(listDaysStr, typeDays)
 
-        if (listCurrent != null) setCurrentView(this, listCurrent)
+        if (listCurrent != null) setCurrentWeather(this, listCurrent)
         if (listDays.isNotEmpty()) setAdapterDays(this, listDays)
 
         val timeStr = sp.getString(MyConst.LIST_TIME, "")

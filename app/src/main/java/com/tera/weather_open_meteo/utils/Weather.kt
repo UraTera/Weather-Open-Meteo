@@ -274,11 +274,11 @@ class Weather(val context: Context) {
 
         when (num) {
             0 -> {
-                activity.setCurrentView(context, list)
+                activity.setCurrentWeather(context, list)
                 saveHomeTempIcon(temp, icon)
             }
 
-            1 -> activity.setCurrentView(context, list)
+            1 -> activity.setCurrentWeather(context, list)
             2, 3 -> setWeatherWidget(id, num, list, false)
         }
 

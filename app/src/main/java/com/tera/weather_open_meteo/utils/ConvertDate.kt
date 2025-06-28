@@ -12,6 +12,9 @@ import kotlin.math.sqrt
 
 object ConvertDate {
 
+    private var pattern = MyConst.PATTERN_FORMAT
+    private var dateFormat = MyConst.DATE_FORMAT
+
     // Текущее время
     fun getCurrentTime(pattern: String): String {
         val stf = SimpleDateFormat(pattern, Locale.getDefault())
@@ -37,15 +40,14 @@ object ConvertDate {
 
     // Дата TimeZone
     fun dateTimeZone(zone: String) : String {
-        val pattern = "yyyy-MM-dd HH:mm"
-        val dateFormat = "EEE, dd LLLL H:mm"
-
         val timeZone = TimeZone.getTimeZone(zone)
         val calendar = Calendar.getInstance(timeZone)
         val year = calendar.get(Calendar.YEAR )
         val month = calendar.get(Calendar.MONTH ) + 1
         val day = calendar.get(Calendar.DAY_OF_MONTH )
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        var hour = calendar.get(Calendar.HOUR_OF_DAY)
+        if (zone == MyConst.TIME_ZONE_NO)
+            hour += 1
         val minute = calendar.get(Calendar.MINUTE)
         val dateTime = "$year-$month-$day $hour:$minute"
         val date = getFromDateTime(dateTime, pattern, dateFormat)

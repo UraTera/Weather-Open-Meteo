@@ -19,6 +19,7 @@ object MyConst {
     const val CITY_POS = "city_pos"
     const val REGION = "region"
     const val TIME_ZONE = "time_zone"
+    const val TIME_ZONE_NO = "Etc/GMT-2"
     const val TEMP = "temp"
     const val ICON = "icon"
 
@@ -34,8 +35,10 @@ object MyConst {
     const val KEY_LIST = "key_list"
     const val PERIOD_UPDATE = 30
     const val PATTERN_FORMAT = "yyyy-MM-dd HH:mm"
+    const val DATE_FORMAT = "EEE, dd LLLL H:mm"
     const val HPA_MM_HG = 0.75006375542
     const val KM_MIL = 0.62137
+    const val COLOR_BAR = -15522965
 
     var widgetId = 0
     var widgetNum = 0

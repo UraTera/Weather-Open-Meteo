@@ -11,6 +11,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
+import com.tera.weather_open_meteo.city.timezone
 
 object MyLocation {
 
@@ -78,10 +79,24 @@ object MyLocation {
         val geocoder = Geocoder(context)
         val addresses = geocoder.getFromLocation(lat, long, 1) ?: listOf()
         val address = addresses.firstOrNull()
+        val city = address?.locality
         val admin = address?.adminArea
         val country = address?.countryName
-        val region = "$admin, $country"
-        return region
+        return if (admin == null || country == null)
+            city.toString()
+        else
+            "$admin, $country"
+    }
+
+    @Suppress("DEPRECATION")
+    fun getTimeZone(context: Context, lat: Double, long: Double): String {
+        val geocoder = Geocoder(context)
+        val addresses = geocoder.getFromLocation(lat, long, 1) ?: listOf()
+        val address = addresses.firstOrNull()
+        var timeZone = address?.timezone(context)
+        if (timeZone == null)
+            timeZone = MyConst.TIME_ZONE_NO
+        return timeZone.toString()
     }
 
 

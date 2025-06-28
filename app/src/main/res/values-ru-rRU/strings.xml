@@ -47,6 +47,7 @@
     <string name="search_address">Поиск адреса</string>
     <string name="cancel">Отмена</string>
     <string name="warning">Внимание!</string>
+    <string name="map_search">Поиск по карте</string>
 
 
     <!-- Погода -->

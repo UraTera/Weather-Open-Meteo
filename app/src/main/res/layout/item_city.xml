@@ -44,6 +44,7 @@
                 android:text="@string/city"
                 android:textColor="@color/white"
                 android:textSize="14sp"
+                android:drawablePadding="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/tvDate"
                 app:layout_constraintEnd_toStartOf="@id/imIcon"
                 app:layout_constraintStart_toEndOf="@id/checkBox"

@@ -56,6 +56,7 @@
     <string name="search_address">Address search</string>
     <string name="cancel">Cancel</string>
     <string name="warning">Warning!</string>
+    <string name="map_search">Search map</string>
 
 
     <!-- Погода -->

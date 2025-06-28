@@ -35,7 +35,7 @@ class Weather(val context: Context) {
     private var longitude = 0.0 // Долгота
     private var city: String? = null
     private var timeZone = ""
-    private var region = ""
+    private var region: String? = null
     private var numTemp = 0
     private var numPress = 0
     private var numWind = 0

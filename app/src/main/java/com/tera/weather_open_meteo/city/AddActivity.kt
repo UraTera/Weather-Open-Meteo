@@ -4,12 +4,15 @@ import android.content.Intent
 import android.content.res.Resources
 import android.location.Geocoder
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
@@ -31,10 +34,14 @@ class AddActivity : AppCompatActivity() {
     private lateinit var progress: ProgressBarAnim
     private var keyNen = false
     private val gson = Gson()
+    private val color = MyConst.COLOR_BAR
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(color, color),
+            navigationBarStyle = SystemBarStyle.light(color, color)
+        )
         setContentView(R.layout.activity_add)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -42,6 +49,12 @@ class AddActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightStatusBars = false
+
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightNavigationBars = false
 
         edSearch = findViewById(R.id.edSearch)
         lineSearch = findViewById(R.id.lineSearch)

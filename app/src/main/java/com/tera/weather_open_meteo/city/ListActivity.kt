@@ -8,6 +8,7 @@ import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -15,11 +16,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.tera.weather_open_meteo.MainActivity
+import com.tera.weather_open_meteo.MapActivity
 import com.tera.weather_open_meteo.R
 import com.tera.weather_open_meteo.adapters.CityAdapter
 import com.tera.weather_open_meteo.adapters.ItemClickListener
@@ -34,18 +37,23 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
     private lateinit var binding: ActivityListBinding
 
     private var launcherAdd: ActivityResultLauncher<Intent>? = null
+    private var launcherMap: ActivityResultLauncher<Intent>? = null
+
     private lateinit var sp: SharedPreferences
     private val gson = Gson()
     private var listCity = ArrayList<CityModel>()
     private var listSelect = ArrayList<Int>()
+    private var latitude = 0.0
+    private var longitude = 0.0
     private var timeLastUpdate = 0L
     private var keyCheck = false
     private var keyPeriod = false
     private var keyUpdate = false
+    private val color = MyConst.COLOR_BAR
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableEdgeToEdge(navigationBarStyle = SystemBarStyle.light(color, color))
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -55,11 +63,20 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
             insets
         }
 
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightStatusBars = false
+
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightNavigationBars = false
+
         sp = getSharedPreferences(MyConst.SETTING, MODE_PRIVATE)
 
         val listStr = intent.getStringExtra(MyConst.LIST_HOME)
         val listHome = gson.fromJson(listStr, CityModel::class.java)
         listCity.add(listHome)
+
+        latitude = listHome.latitude
+        longitude = listHome.longitude
 
         restore()
 
@@ -88,10 +105,22 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
                     val intent = result.data
                     if (intent != null) {
                         val cityStr = intent.getStringExtra(MyConst.LIST_CITY).toString()
-
                         val list = gson.fromJson(cityStr, CityModel::class.java)
-//                        listNew = list
+                        listCity.add(list)
 
+                        setAdapter(this, listCity)
+                        getWeather()
+                    }
+                }
+            }
+
+        launcherMap =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+                if (result.resultCode == RESULT_OK) {
+                    val intent = result.data
+                    if (intent != null) {
+                        val cityStr = intent.getStringExtra(MyConst.LIST_CITY).toString()
+                        val list = gson.fromJson(cityStr, CityModel::class.java)
                         listCity.add(list)
 
                         setAdapter(this, listCity)
@@ -161,6 +190,14 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
 
     // Кнопки
     private fun initButtons() = with(binding) {
+
+        tvSearch.setOnClickListener {
+            val intent = Intent(this@ListActivity, MapActivity::class.java)
+            intent.putExtra(MyConst.LATITUDE, latitude)
+            intent.putExtra(MyConst.LONGITUDE, longitude)
+            launcherMap?.launch(intent)
+        }
+
         imAdd.setOnClickListener {
             val intent = Intent(this@ListActivity, AddActivity::class.java)
             launcherAdd?.launch(intent)
@@ -168,7 +205,6 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
 
         imClear.setOnClickListener {
             listSelect = MyConst.listSelect
-            //Log.d("myLogs", "imClearAll, listSelect: ${listSelect.toList()}")
 
             if (listSelect.isNotEmpty()) {
                 dialogDelete()

@@ -12,6 +12,7 @@ Project created in Android Studio Meerkat | 2024.3.1 Patch 2.
 
 ![weather1](https://github.com/user-attachments/assets/ae0575e4-c6ad-413b-8cc7-725c9fe8126c)
 ![weather2](https://github.com/user-attachments/assets/8a1c7826-9167-4517-8684-24e0a5ee1765)
+
 ![weather4](https://github.com/user-attachments/assets/89a9a01b-e07b-4ab3-b664-3682c510afb5)
 ![weather3](https://github.com/user-attachments/assets/450afa9f-40ba-4546-9a26-006a1c4f5961)
 

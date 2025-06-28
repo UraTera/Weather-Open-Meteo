@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.res.Resources
 import android.location.Geocoder
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView

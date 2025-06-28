@@ -10,10 +10,12 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import com.tera.weather_open_meteo.databinding.ActivitySettingsBinding
@@ -31,10 +33,14 @@ class SettingsActivity : AppCompatActivity() {
     private var numFont = 0
     private var keyUpdate = false
     private lateinit var sp: SharedPreferences
+    private val color = MyConst.COLOR_BAR
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(color, color),
+            navigationBarStyle = SystemBarStyle.light(color, color)
+        )
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -43,6 +49,12 @@ class SettingsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightStatusBars = false
+
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightNavigationBars = false
 
         sp = getSharedPreferences(MyConst.SETTING, MODE_PRIVATE)
         numTemp = sp.getInt(MyConst.NUM_TEMP, 0)

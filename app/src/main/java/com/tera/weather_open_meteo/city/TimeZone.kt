@@ -3,6 +3,7 @@ package com.tera.weather_open_meteo.city
 import android.content.Context
 import android.location.Address
 import android.location.Geocoder
+import com.tera.weather_open_meteo.utils.MyConst
 import java.io.IOException
 import java.util.*
 import kotlin.math.roundToInt

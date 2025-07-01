@@ -6,15 +6,16 @@ The chart is configured visually during layout.
 
 Location permission required.
 
-Added the function of searching for a location by name and by map.
+There is a function to search for a location by name and by map.
 
 Project created in Android Studio Meerkat | 2024.3.1 Patch 2.
 
-![weather1](https://github.com/user-attachments/assets/ae0575e4-c6ad-413b-8cc7-725c9fe8126c)
-![weather2](https://github.com/user-attachments/assets/8a1c7826-9167-4517-8684-24e0a5ee1765)
+![weather1](https://github.com/user-attachments/assets/86d15e3e-b347-4c1d-b4ff-2226bd61b90c)
+![weather5](https://github.com/user-attachments/assets/b178ae3a-6d77-45cc-ae03-5740d3d8d69b)
+![weather2](https://github.com/user-attachments/assets/4235d54a-5c90-411e-8783-f0d917dfd2d4)
 
 ![weather4](https://github.com/user-attachments/assets/89a9a01b-e07b-4ab3-b664-3682c510afb5)
-![weather3](https://github.com/user-attachments/assets/450afa9f-40ba-4546-9a26-006a1c4f5961)
+![weather3](https://github.com/user-attachments/assets/dcb51f02-ea8c-4eb6-ae02-c9802b999490)
 
 To use the library, add the dependency:
 ```

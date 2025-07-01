@@ -65,22 +65,12 @@
 
     <TextView
         android:id="@+id/tvCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/title"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="8dp"
+        style="@style/title"
         android:text="@string/city"
-        android:textColor="@color/white"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imSetting"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardCurrent"
@@ -217,7 +207,7 @@
 
         <TextView
             android:id="@+id/tvForecast1"
-            style="@style/title_rc"
+            style="@style/title.rc"
             android:text="@string/forecast_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -277,7 +267,7 @@
 
     <TextView
         android:id="@+id/tvForecast6"
-        style="@style/title_rc"
+        style="@style/title.rc"
         android:layout_marginTop="4dp"
         android:text="@string/forecast_6"
         app:layout_constraintEnd_toEndOf="parent"

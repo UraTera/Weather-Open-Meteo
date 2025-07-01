@@ -4,7 +4,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="title">#0B4080</color>             <!-- Заголовок -->
-    <color name="title_rc">#92245897</color>        <!-- Заголовок списков -->
+    <color name="title_rc">#92245897</color>        <!-- Заголовок списков полупрозрачный-->
     <color name="groundM">#2B7DA8</color>           <!-- Общий фон -->
     <color name="clockColor">#A1FBB0</color>        <!-- Часы -->
     <color name="textM">#FCFEFF</color>             <!-- Текст общего фона -->

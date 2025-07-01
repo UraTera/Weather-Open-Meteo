@@ -5,6 +5,7 @@ import android.content.res.Resources
 import android.location.Geocoder
 import android.os.Bundle
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.SystemBarStyle
@@ -31,6 +32,7 @@ class AddActivity : AppCompatActivity() {
     private lateinit var edSearch: EditText
     private lateinit var lineSearch: LinearLayout
     private lateinit var progress: ProgressBarAnim
+    private lateinit var imBack: ImageView
     private var keyNen = false
     private val gson = Gson()
     private val color = MyConst.COLOR_BAR
@@ -58,6 +60,11 @@ class AddActivity : AppCompatActivity() {
         edSearch = findViewById(R.id.edSearch)
         lineSearch = findViewById(R.id.lineSearch)
         progress = findViewById(R.id.progress)
+        imBack = findViewById(R.id.imBack)
+
+        imBack.setOnClickListener {
+            finish()
+        }
 
         setProgressBar(false)
 

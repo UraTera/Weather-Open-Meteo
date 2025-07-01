@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".city.AddActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tool_bar_height"
@@ -16,14 +16,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <ImageView
+            android:id="@+id/imBack"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_location"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:layout_height="@dimen/tool_bar_height"
+            android:layout_marginStart="8dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/setting"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back"
+            tools:ignore="RtlSymmetry,ImageContrastCheck" />
 
-    </androidx.appcompat.widget.Toolbar>
+        <TextView
+            android:id="@+id/tvAdd"
+            style="@style/title"
+            android:layout_width="0dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="8dp"
+            android:text="@string/add_location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInput"

@@ -52,20 +52,11 @@
 
     <TextView
         android:id="@+id/tvCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/title"
-        android:paddingStart="16dp"
-        android:paddingTop="8dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="8dp"
+        style="@style/title"
         android:text="@string/history"
-        android:textColor="@color/white"
-        android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/tvSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcCity"

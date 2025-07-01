@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lineToolBar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tool_bar_height"
+        android:layout_height="wrap_content"
         android:background="@color/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,7 @@
         <TextView
             android:id="@+id/tvCity"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/tool_bar_height"
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:text="@string/city"
@@ -222,7 +222,7 @@
 
         <TextView
             android:id="@+id/tvForecast1"
-            style="@style/title_rc.tab"
+            style="@style/title.rc.tab"
             android:text="@string/forecast_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -282,7 +282,7 @@
 
     <TextView
         android:id="@+id/tvForecast6"
-        style="@style/title_rc.tab"
+        style="@style/title.rc.tab"
         android:layout_marginTop="4dp"
         android:text="@string/forecast_6"
         app:layout_constraintEnd_toEndOf="parent"

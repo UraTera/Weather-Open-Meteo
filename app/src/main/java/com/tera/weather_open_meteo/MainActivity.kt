@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
@@ -21,9 +22,11 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.tera.chart.Chart
 import com.tera.progress.ProgressBarAnim
 import com.tera.weather_open_meteo.adapters.AdapterDays
 import com.tera.weather_open_meteo.city.ListActivity
@@ -34,6 +37,7 @@ import com.tera.weather_open_meteo.models.DaysModel
 import com.tera.weather_open_meteo.utils.ConvertDate
 import com.tera.weather_open_meteo.utils.MyConst
 import com.tera.weather_open_meteo.utils.MyLocation
+import com.tera.weather_open_meteo.utils.ORANGE
 import com.tera.weather_open_meteo.utils.Weather
 import com.tera.weather_open_meteo.widgets.Widget
 import com.tera.weather_open_meteo.widgets.WidgetTab
@@ -47,9 +51,11 @@ class MainActivity : AppCompatActivity() {
     private var widgetId = 0
     private var widgetNum = 0
     private var keyUpdate = true
+    private var keyMore = false
     private val color = MyConst.COLOR_BAR
 
     private var launcherSet: ActivityResultLauncher<Intent>? = null
+    private var launcherMore: ActivityResultLauncher<Intent>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +90,7 @@ class MainActivity : AppCompatActivity() {
                         keyUpdate = intent.getBooleanExtra(MyConst.KEY_UPDATE, false)
                         numFont = intent.getIntExtra(MyConst.NUM_FONT, 0)
                         if (keyUpdate) {
+                            getWeather()
                             updateWidget()
                             setFontClock()
                         } else
@@ -92,7 +99,20 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        initParams()
+        launcherMore =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+                if (result.resultCode == RESULT_OK) {
+                    keyMore = true
+//                    val arrayCurrent = ORANGE.arrayCurrent
+//                    val listCurrent = arrayCurrent[0]
+//                    setCurrentWeather(this, listCurrent)
+//                    val city = ORANGE.city
+//                    val city = listCurrent.city
+                    //Log.d("myLogs", "launcherMore, city: $city")
+                }
+            }
+
+        initButtons()
         setOrientation()
         // Кнопка Back
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
@@ -107,8 +127,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        getWeather()
-        restoreDate()
+        if (!keyMore) {
+            getWeather()
+            restoreDate()
+        }
     }
 
     private fun getWeather(){
@@ -142,8 +164,9 @@ class MainActivity : AppCompatActivity() {
         binding.tvCity.setCompoundDrawables(img, null, null, null)
     }
 
-    private fun initParams() = with(binding) {
+    private fun initButtons() = with(binding) {
         progressBar.animation = false
+        imMore.isVisible = false
 
         progressBar.setOnClickListener {
             //Weather(this@MainActivity).getWeatherMain()
@@ -157,6 +180,10 @@ class MainActivity : AppCompatActivity() {
         }
         imSetting.setOnClickListener {
             openSetting()
+        }
+        imMore.setOnClickListener {
+            val intent = Intent(this@MainActivity, MoreActivity::class.java)
+            launcherMore?.launch(intent)
         }
     }
 
@@ -177,15 +204,15 @@ class MainActivity : AppCompatActivity() {
 
     // Окно настроек
     private fun openSetting() {
-        MyConst.widgetId = widgetId
-        MyConst.widgetNum = widgetNum
+        ORANGE.widgetId = widgetId
+        ORANGE.widgetNum = widgetNum
         val intent = Intent(this, SettingsActivity::class.java)
         launcherSet?.launch(intent)
     }
 
     private fun updateWidget() {
-        val id = MyConst.widgetId
-        val num = MyConst.widgetNum
+        val id = ORANGE.widgetId
+        val num = ORANGE.widgetNum
         when (num) {
             1 -> {
                 val widget = Widget()
@@ -202,6 +229,8 @@ class MainActivity : AppCompatActivity() {
     // Текущая погода
     fun setCurrentWeather(context: Context, list: CurrentModel) {
         val view = context as Activity
+        ORANGE.city = list.city
+//        val city = list.city
         view.findViewById<TextView>(R.id.tvCity).text = list.city
         view.findViewById<TextView>(R.id.tvTemp).text = list.currentTemp
         view.findViewById<TextView>(R.id.tvUpdate).text = list.time
@@ -224,7 +253,7 @@ class MainActivity : AppCompatActivity() {
             ContextCompat.getColor(context, R.color.week)
         else
             ContextCompat.getColor(context, R.color.white)
-
+//        Log.d("myLogs", "setCurrent, city: ${list.city}")
         tvWeek.setTextColor(color)
     }
 
@@ -238,17 +267,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Загрузка диаграммы
-    fun setChart3(
+    fun setChart(
         context: Context, listTime: ArrayList<String>,
         listTemp: ArrayList<String>, listIcon: ArrayList<Int>,
         keyRestore: Boolean
     ) {
         val view = context as Activity
-        val lineChart = view.findViewById<LineChart>(R.id.lineChart)
+        val tempChart = view.findViewById<Chart>(R.id.tempChart)
 
-        lineChart.dataAxisString = listTime
-        lineChart.dataValueString = listTemp
-        lineChart.icons = listIcon
+        tempChart.dataAxisString = listTime
+        tempChart.dataValueString = listTemp
+        tempChart.icons = listIcon
 
         if (keyRestore) return
 
@@ -281,7 +310,7 @@ class MainActivity : AppCompatActivity() {
 
     // Управление прогресс барами
     fun setProgressBar(context: Context, id: Int, num: Int, keyOn: Boolean) {
-        //Log.d("myLogs", "setProgressBar 1, num: $num, keyOn: $keyOn")
+        Log.d("myLogs", "setProgressBar 1, num: $num, keyOn: $keyOn")
         when (num) {
             0 -> {
                 val view = context as Activity
@@ -299,6 +328,11 @@ class MainActivity : AppCompatActivity() {
                 widget.setProgress(context, id, keyOn)
             }
         }
+    }
+
+    fun setVisibleMore(context: Context, keyOn: Boolean){
+        val view = context as Activity
+        view.findViewById<ImageView>(R.id.imMore).isVisible = keyOn
     }
 
     // Установить шрифт
@@ -342,7 +376,7 @@ class MainActivity : AppCompatActivity() {
         val listIcon = gson.fromJson<ArrayList<Int>>(iconStr, typeInt)
 
         if (listTime != null && listTemp != null && listIcon != null)
-            setChart3(this, listTime, listTemp, listIcon, true)
+            setChart(this, listTime, listTemp, listIcon, true)
 
         numFont = sp.getInt(MyConst.NUM_FONT, 0)
         setFontClock()

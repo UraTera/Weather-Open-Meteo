@@ -64,7 +64,7 @@ class AddActivity : AppCompatActivity() {
         // Проверить подключение к Интернет
         if (!MyLocation.isOnline(this)) {
             keyNen = true
-            dialogMessage()
+            DialogManager.messageNoNet(this)
         }
 
         initEditText()
@@ -83,7 +83,7 @@ class AddActivity : AppCompatActivity() {
             }
 
             if (keyNen) {
-                dialogMessage()
+                DialogManager.messageNoNet(this)
                 return@doOnTextChanged
             } else
                 setProgressBar(true)
@@ -158,14 +158,6 @@ class AddActivity : AppCompatActivity() {
                 finish()
             }
         }
-    }
-
-    // Сообщение нет интернет
-    private fun dialogMessage() {
-        val icon = R.drawable.ic_no_internet
-        val title = getString(R.string.warning)
-        val message = getString(R.string.no_net)
-        DialogManager.dialogMessage(this, icon, title, message)
     }
 
     private fun setProgressBar(key: Boolean) {

@@ -49,7 +49,6 @@
     <string name="warning">Внимание!</string>
     <string name="map_search">Поиск по карте</string>
 
-
     <!-- Погода -->
     <string name="forecast_1">Почасовой прогноз</string>
     <string name="forecast_6">Прогноз на 6 дней</string>
@@ -57,11 +56,14 @@
     <string name="sunrise">Восход:</string>
     <string name="sunset">Закат:</string>
 
-
     <string name="units">Единицы измерения</string>
-    <string name="unit_temp_text">Температура</string>
-    <string name="unit_press_text">Давление</string>
-    <string name="unit_wind_text">Скорость ветра</string>
+    <string name="temp">Температура</string>
+    <string name="press">Давление</string>
+    <string name="wind_speed">Скорость ветра</string>
+    <string name="fall">Осадки</string>
+    <string name="clouds">Облачность, %</string>
+    <string name="humidity_chart">Влажность, %</string>
+    <string name="uv_index">УФ-индекс</string>
 
     <!-- Давление -->
     <string name="pressure">Давление:</string>
@@ -74,6 +76,10 @@
     <string name="unit_wind_kmh">км/ч</string>
     <string name="unit_wind_mc">м/с</string>
     <string name="unit_wind_mlh">миль/ч</string>
+
+    <!-- Осадки -->
+    <string name="unit_mm">мм</string>
+    <string name="unit_in">in</string>
 
     <!-- Направление ветра-->
     <string name="ne">СВ</string>

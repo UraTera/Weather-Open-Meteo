@@ -51,6 +51,13 @@ object DialogManager {
         dialog.show()
     }
 
+    fun messageNoNet(context: Context) {
+        val icon = R.drawable.ic_no_internet
+        val title = context.getString(R.string.warning)
+        val message = context.getString(R.string.no_net)
+        dialogMessage(context, icon, title, message)
+    }
+
     fun getRounded (): InsetDrawable {
         val drawable = GradientDrawable()
         drawable.shape = GradientDrawable.RECTANGLE
@@ -59,5 +66,7 @@ object DialogManager {
         val insetDrawable = InsetDrawable(drawable, 40)
         return insetDrawable
     }
+
+
 
 }

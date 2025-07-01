@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sky_v"
+    tools:context=".MoreActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lineTittle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:background="@color/title_rc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imBack"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/tool_bar_height"
+            android:layout_marginStart="8dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/setting"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back"
+            tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            style="@style/title_rc"
+            android:paddingStart="0dp"
+            android:text="@string/city"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imBack"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry,TextContrastCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lineTittle"
+        >
+
+        <HorizontalScrollView
+            android:id="@+id/scroll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <com.tera.chart.Chart
+                android:id="@+id/topChart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chart_itemLength="@dimen/item_len"
+                app:chart_Show="false"
+                app:chart_textShow="false"
+                app:chart_textAxisColor="@color/white"/>
+
+        </HorizontalScrollView>
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scrollbars="none">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            android:backgroundTint="@color/item">
+
+            <HorizontalScrollView
+                android:id="@+id/scroll2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:scrollbars="none"
+                tools:ignore="SpeakableTextPresentCheck">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.tera.chart.Chart
+                        android:id="@+id/tempChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chart_itemLength="@dimen/item_len"
+                        app:chart_labelSize="@dimen/label_size"
+                        app:chart_labelText=" "
+                        app:chart_markZeroAllHeight="true"
+                        app:chart_markZeroShow="true"
+                        app:chart_minHeight="@dimen/min_height"
+                        app:chart_textAxisShow="false"
+                        app:chart_textColor="@color/white"
+                        app:chart_textOnLine="true"
+                        app:chart_iconShow="false"
+                        app:line_fillShow="true"
+                        app:line_fillStyle="gradient"
+                        app:line_fillTopColor="#FBEE5C"
+                        app:line_fillBottomColor="@color/bottom_color"
+                        />
+
+                    <com.tera.chart.Chart
+                        android:id="@+id/pressChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bar_gradientShow="true"
+                        app:bar_gradientTopColor="#0DB5EF"
+                        app:bar_partWidth="40"
+                        app:chart_Style="bar"
+                        app:chart_chartColor="#A6E2ED"
+                        app:chart_iconShow="false"
+                        app:chart_itemLength="@dimen/item_len"
+                        app:chart_labelSize="@dimen/label_size"
+                        app:chart_labelText=" "
+                        app:chart_markZeroAllHeight="true"
+                        app:chart_markZeroShow="true"
+                        app:chart_minHeight="@dimen/min_height"
+                        app:chart_textAxisShow="false"
+                        app:chart_textColor="@color/white"
+                        app:chart_textFormat="integer" />
+
+                    <!-- Скорость ветра -->
+                    <com.tera.chart.Chart
+                        android:id="@+id/windChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chart_iconShow="false"
+                        app:chart_itemLength="@dimen/item_len"
+                        app:chart_labelSize="@dimen/label_size"
+                        app:chart_labelText=" "
+                        app:chart_markZeroAllHeight="true"
+                        app:chart_markZeroShow="true"
+                        app:chart_minHeight="@dimen/min_height"
+                        app:chart_textAxisShow="false"
+                        app:chart_textAxisSize="11sp"
+                        app:chart_textColor="@color/white"
+                        app:chart_textFormat="integer" />
+
+                    <!-- Осадки -->
+                    <com.tera.chart.Chart
+                        android:id="@+id/falloutChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bar_gradientShow="true"
+                        app:bar_gradientTopColor="#0DB5EF"
+                        app:bar_partWidth="40"
+                        app:chart_Style="line"
+                        app:chart_chartColor="#A6E2ED"
+                        app:chart_iconShow="false"
+                        app:chart_itemLength="@dimen/item_len"
+                        app:chart_labelSize="@dimen/label_size"
+                        app:chart_labelText=" "
+                        app:chart_markZeroAllHeight="true"
+                        app:chart_markZeroShow="true"
+                        app:chart_minHeight="@dimen/min_height"
+                        app:chart_textAxisShow="false"
+                        app:chart_textColor="@color/white"
+                        app:chart_textFormat="string" />
+
+                    <!-- Облачность -->
+                    <com.tera.chart.Chart
+                        android:id="@+id/cloudsChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bar_gradientShow="true"
+                        app:bar_gradientTopColor="#00265D"
+                        app:bar_partWidth="40"
+                        app:chart_Style="bar"
+                        app:chart_chartColor="#FAF4B2"
+                        app:chart_iconShow="false"
+                        app:chart_itemLength="@dimen/item_len"
+                        app:chart_labelSize="@dimen/label_size"
+                        app:chart_labelText=" "
+                        app:chart_markZeroAllHeight="true"
+                        app:chart_markZeroShow="true"
+                        app:chart_minHeight="@dimen/min_height"
+                        app:chart_textAxisShow="false"
+                        app:chart_textColor="@color/white"
+                        app:chart_textFormat="integer" />
+
+                    <!-- Влажность -->
+                    <com.tera.chart.Chart
+                        android:id="@+id/humidityChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bar_gradientShow="true"
+                        app:bar_gradientTopColor="#0DB5EF"
+                        app:bar_partWidth="40"
+                        app:chart_Style="line"
+                        app:chart_chartColor="#A6E2ED"
+                        app:chart_iconShow="false"
+                        app:chart_itemLength="@dimen/item_len"
+                        app:chart_labelSize="@dimen/label_size"
+                        app:chart_labelText=" "
+                        app:chart_markZeroAllHeight="true"
+                        app:chart_markZeroShow="true"
+                        app:chart_minHeight="@dimen/min_height"
+                        app:chart_textAxisShow="false"
+                        app:chart_textColor="@color/white"
+                        app:chart_textAxisColor="@color/white"
+                        app:chart_textFormat="integer" />
+
+                    <!-- УФ-индекс -->
+                    <com.tera.chart.Chart
+                        android:id="@+id/uvChart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:bar_gradientShow="true"
+                        app:bar_gradientTopColor="#0DB5EF"
+                        app:bar_partWidth="40"
+                        app:chart_Style="line"
+                        app:chart_chartColor="#EFE905"
+                        app:line_pointColor="#D3AD46"
+                        app:chart_iconShow="false"
+                        app:chart_itemLength="@dimen/item_len"
+                        app:chart_labelSize="@dimen/label_size"
+                        app:chart_labelText=" "
+                        app:chart_markZeroAllHeight="true"
+                        app:chart_markZeroShow="true"
+                        app:chart_minHeight="@dimen/min_height"
+                        app:chart_textAxisShow="false"
+                        app:chart_textColor="@color/white"
+                        app:chart_textAxisColor="@color/white"
+                        app:chart_textFormat="integer"
+                        app:line_fillShow="true"
+                        app:line_fillStyle="gradient"
+                        app:line_fillBottomColor="#62BF03"
+                        app:line_fillTopColor="#FA0303"
+                        />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tvTemp"
+                style="@style/text.chart"
+                android:layout_marginTop="@dimen/margin_top"
+                android:text="@string/temp" />
+
+            <TextView
+                android:id="@+id/tvPress"
+                style="@style/text.chart"
+                android:layout_marginTop="100dp"
+                android:text="@string/press" />
+
+            <TextView
+                android:id="@+id/tvWind"
+                style="@style/text.chart"
+                android:layout_marginTop="200dp"
+                android:text="@string/wind_speed" />
+
+            <TextView
+                android:id="@+id/tvFall"
+                style="@style/text.chart"
+                android:layout_marginTop="300dp"
+                android:text="@string/fall" />
+
+            <TextView
+                android:id="@+id/tvClouds"
+                style="@style/text.chart"
+                android:layout_marginTop="400dp"
+                android:text="@string/clouds"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                style="@style/text.chart"
+                android:layout_marginTop="500dp"
+                android:text="@string/humidity_chart" />
+
+            <TextView
+                android:id="@+id/tvUV"
+                style="@style/text.chart"
+                android:layout_marginTop="600dp"
+                android:text="@string/uv_index" />
+
+        </androidx.cardview.widget.CardView>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

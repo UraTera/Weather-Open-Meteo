@@ -28,6 +28,7 @@ class SettingsActivity : AppCompatActivity() {
     private var numTemp = 0
     private var numPress = 0
     private var numWind = 0
+    private var numFall = 0
     private var numPeriod = 0
     private var period = 0
     private var numFont = 0
@@ -60,6 +61,7 @@ class SettingsActivity : AppCompatActivity() {
         numTemp = sp.getInt(MyConst.NUM_TEMP, 0)
         numPress = sp.getInt(MyConst.NUM_PRESS, 0)
         numWind = sp.getInt(MyConst.NUM_WIND, 0)
+        numFall = sp.getInt(MyConst.NUM_FALL, 0)
         numPeriod = sp.getInt(MyConst.NUM_PERIOD, 2)
         numFont = sp.getInt(MyConst.NUM_FONT, 0)
         setParams()
@@ -107,6 +109,13 @@ class SettingsActivity : AppCompatActivity() {
             }
             keyUpdate = true
         }
+        rgFall.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.rbMm -> numFall = 0
+                R.id.rbIn -> numFall = 1
+            }
+            keyUpdate = true
+        }
     }
 
     private fun setParams() = with(binding) {
@@ -123,6 +132,10 @@ class SettingsActivity : AppCompatActivity() {
             0 -> rbKmHour.isChecked = true
             1 -> rbMSec.isChecked = true
             2 -> rbMiHour.isChecked = true
+        }
+        when (numFall) {
+            0 -> rbMm.isChecked = true
+            1 -> rbIn.isChecked = true
         }
         setFontClock()
     }
@@ -203,6 +216,7 @@ class SettingsActivity : AppCompatActivity() {
             putInt(MyConst.NUM_TEMP, numTemp)
             putInt(MyConst.NUM_PRESS, numPress)
             putInt(MyConst.NUM_WIND, numWind)
+            putInt(MyConst.NUM_FALL, numFall)
             putInt(MyConst.NUM_PERIOD, numPeriod)
             putInt(MyConst.PERIOD, period)
             putInt(MyConst.NUM_FONT, numFont)

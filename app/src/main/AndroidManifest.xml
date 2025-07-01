@@ -22,11 +22,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <activity android:name=".MapActivity"/>
-        <activity android:name=".city.ListActivity"/>
-        <activity android:name=".city.AddActivity"/>
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".MoreActivity"/>  <!-- MoreActivity -->
+        <activity android:name=".MapActivity" />
+        <activity android:name=".city.ListActivity" />
+        <activity android:name=".city.AddActivity" />
+        <activity android:name=".SettingsActivity" />
 
+        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -49,7 +51,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".widgets.WidgetTab"
             android:exported="false"
@@ -63,7 +64,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_tab_info" />
         </receiver>
-
         <receiver
             android:name=".widgets.Widget"
             android:exported="false"
@@ -77,7 +77,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
-
     </application>
 
 </manifest>

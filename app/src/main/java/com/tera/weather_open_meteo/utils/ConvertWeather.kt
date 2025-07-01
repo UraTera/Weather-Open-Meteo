@@ -75,6 +75,46 @@ class ConvertWeather(private val context: Context) {
         return res
     }
 
+    // Скорость ветра
+    fun getWind(value: Double, numWind: Int): String{
+        var res = ""
+        when(numWind) {
+            0 -> {
+                val speed = value.roundToInt()
+                val unit = context.getString(R.string.unit_wind_kmh)
+                res = "$speed $unit"
+            }
+            1 -> {
+                val speed = (value / 3.6).roundToInt()
+                val unit = context.getString(R.string.unit_wind_mc)
+                res = "$speed $unit"
+            }
+            2 -> {
+                val speed = (value * MyConst.KM_MIL).roundToInt()
+                val unit = context.getString(R.string.unit_wind_mlh)
+                res = "$speed $unit,"
+            }
+        }
+        return res
+    }
+
+    // Осадки
+    fun getFall(value: Double, numFall: Int): String{
+        var res = ""
+        when(numFall){
+            0 -> {
+                res = value.toString()
+            }
+            1 -> {
+                val fall = value * MyConst.INCH
+                res = "%.2f".format(fall)
+                res = res.replace(',', '.')
+            }
+        }
+        return res
+    }
+
+
     // Направление ветра
     private fun getWindDir(dir: Int): String {
         val wordDir = when (dir) {

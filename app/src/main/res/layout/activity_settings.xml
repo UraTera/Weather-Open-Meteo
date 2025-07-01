@@ -49,7 +49,7 @@
 
             <TextView
                 style="@style/text_setting"
-                android:text="@string/unit_temp_text" />
+                android:text="@string/temp" />
 
             <RadioGroup
                 android:id="@+id/rgTemp"
@@ -74,7 +74,7 @@
 
             <TextView
                 style="@style/text_setting"
-                android:text="@string/unit_press_text" />
+                android:text="@string/press" />
 
             <RadioGroup
                 android:id="@+id/rgPress"
@@ -106,13 +106,13 @@
 
             <TextView
                 style="@style/text_setting"
-                android:text="@string/unit_wind_text" />
+                android:text="@string/wind_speed" />
 
             <RadioGroup
                 android:id="@+id/rgWind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="26dp"
+                android:layout_marginBottom="12dp"
                 android:orientation="horizontal">
 
                 <RadioButton
@@ -126,13 +126,38 @@
                     android:id="@+id/rbMSec"
                     style="@style/text_rb"
                     android:text="@string/unit_wind_mc"
-                    android:textColor="@color/white"
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <RadioButton
                     android:id="@+id/rbMiHour"
                     style="@style/text_rb"
                     android:text="@string/unit_wind_mlh"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </RadioGroup>
+
+            <TextView
+                style="@style/text_setting"
+                android:text="@string/fall" />
+
+            <RadioGroup
+                android:id="@+id/rgFall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbMm"
+                    style="@style/text_rb"
+                    android:checked="true"
+                    android:text="@string/unit_mm"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <RadioButton
+                    android:id="@+id/rbIn"
+                    style="@style/text_rb"
+                    android:text="@string/unit_in"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </RadioGroup>
@@ -191,7 +216,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="50dp" />
         </LinearLayout>
     </ScrollView>
 

@@ -11,7 +11,7 @@
     <string name="date2" translatable="false">Aug 24 Fri.</string>
     <string name="date5" translatable="false">Aug 24</string>
     <string name="week" translatable="false">Sat.</string>
-    <string name="temp" translatable="false">25°C</string>
+
 
     <string name="no_net">No internet connection!</string>
     <string name="no_gps">Location disabled!</string>
@@ -58,7 +58,6 @@
     <string name="warning">Warning!</string>
     <string name="map_search">Search map</string>
 
-
     <!-- Погода -->
     <string name="forecast_1">Hourly forecast</string>
     <string name="forecast_6">Forecast for 6 days</string>
@@ -67,11 +66,14 @@
     <string name="sunrise">Sunrise:</string>
     <string name="sunset">Sunset:</string>
 
-
     <string name="units">Units of measurement</string>
-    <string name="unit_temp_text">Temperature</string>
-    <string name="unit_press_text">Pressure</string>
-    <string name="unit_wind_text">Wind speed</string>
+    <string name="temp">Temperature</string>
+    <string name="press">Pressure</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="fall">Precipitation</string>
+    <string name="clouds">Cloudiness, %</string>
+    <string name="humidity_chart">Humidity, %</string>
+    <string name="uv_index">UV index</string>
 
     <!-- Давление -->
     <string name="pressure">Pressure:</string>
@@ -85,6 +87,10 @@
     <string name="unit_wind_mc">m/s</string>
     <string name="unit_wind_mlh">mph</string>
 
+    <!-- Осадки -->
+    <string name="unit_mm">mm</string>
+    <string name="unit_in">in</string>
+
     <!-- Направление ветра-->
     <string name="ne">NE</string>
     <string name="e">E</string>
@@ -94,7 +100,6 @@
     <string name="w">W</string>
     <string name="nw">NW</string>
     <string name="n">N</string>
-
 
     <!-- Описание погоды -->
     <string name="wmo0">Clear</string>

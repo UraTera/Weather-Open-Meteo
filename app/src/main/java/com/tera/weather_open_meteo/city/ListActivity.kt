@@ -31,6 +31,7 @@ import com.tera.weather_open_meteo.models.CityModel
 import com.tera.weather_open_meteo.utils.ConvertDate
 import com.tera.weather_open_meteo.utils.DialogManager
 import com.tera.weather_open_meteo.utils.MyConst
+import com.tera.weather_open_meteo.utils.ORANGE
 
 class ListActivity : AppCompatActivity(), ItemClickListener {
 
@@ -174,8 +175,8 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
     }
 
     override fun onItemClickDelete(list: ArrayList<Int>) {
-        MyConst.listSelect = list
-        MyConst.keyUpdate = list.isNotEmpty()
+        ORANGE.listSelect = list
+        ORANGE.keyUpdate = list.isNotEmpty()
     }
 
     private fun sendToMain(context: Context, pos: Int) {
@@ -204,7 +205,7 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
         }
 
         imClear.setOnClickListener {
-            listSelect = MyConst.listSelect
+            listSelect = ORANGE.listSelect
 
             if (listSelect.isNotEmpty()) {
                 dialogDelete()
@@ -263,7 +264,7 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
         keyCheck = true
         setAdapter(this, listCity)
         listSelect.clear()
-        MyConst.keyUpdate = false
+        ORANGE.keyUpdate = false
     }
 
     private fun dialogClean() {
@@ -331,7 +332,7 @@ class ListActivity : AppCompatActivity(), ItemClickListener {
     // Кнопка Back
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
-            keyUpdate = MyConst.keyUpdate
+            keyUpdate = ORANGE.keyUpdate
             if (keyUpdate) {
                 clearSelect()
             } else

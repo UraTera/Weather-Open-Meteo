@@ -24,6 +24,7 @@ import com.tera.weather_open_meteo.widgets.WidgetTab
 import org.json.JSONObject
 import java.util.TimeZone
 import kotlin.concurrent.thread
+import kotlin.math.roundToInt
 
 class Weather(val context: Context) {
 
@@ -39,6 +40,7 @@ class Weather(val context: Context) {
     private var numTemp = 0
     private var numPress = 0
     private var numWind = 0
+    private var numFall = 0
     private var countRequest = 2
     private var timeLastUpdate = 0L
 
@@ -155,6 +157,7 @@ class Weather(val context: Context) {
         numTemp = sp.getInt(MyConst.NUM_TEMP, 0)
         numPress = sp.getInt(MyConst.NUM_PRESS, 0)
         numWind = sp.getInt(MyConst.NUM_WIND, 0)
+        numFall = sp.getInt(MyConst.NUM_FALL, 0)
     }
 
     private fun retryUpdate(id: Int, num: Int) {
@@ -171,7 +174,7 @@ class Weather(val context: Context) {
                 "latitude=$latitude&" +
                 "longitude=$longitude&" +
                 "timezone=$timeZone&" +
-                "hourly=temperature_2m,weather_code,is_day&" +
+                "hourly=temperature_2m,surface_pressure,wind_speed_10m,weather_code,is_day,precipitation,cloud_cover,relative_humidity_2m,uv_index&" +
                 "current=temperature_2m,relative_humidity_2m,is_day,weather_code,surface_pressure,wind_speed_10m,wind_direction_10m&" +
                 "daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,wind_speed_10m_max,wind_direction_10m_dominant,surface_pressure_mean"
 
@@ -212,6 +215,7 @@ class Weather(val context: Context) {
 //        Log.d("myLogs", "currentWeather 1, id: $id, num: $num")
 
         val convert = ConvertWeather(context)
+        val listCurrent = ArrayList<CurrentModel>()
 
         val current = obj.getJSONObject("current")
         val dateTemp = current.getString("time").replace('T', ' ')
@@ -269,16 +273,21 @@ class Weather(val context: Context) {
             sunset
         )
 
-//        Log.d("myLogs", "currentWeather, temp: $temp")
+        listCurrent.add(list)
+
+        //Log.d("myLogs", "currentWeather, temp: $temp")
         activity.setProgressBar(context, id, num, false)
 
         when (num) {
             0 -> {
                 activity.setCurrentWeather(context, list)
                 saveHomeTempIcon(temp, icon)
+                activity.setVisibleMore(context, true)
             }
-
-            1 -> activity.setCurrentWeather(context, list)
+            1 -> {
+                activity.setCurrentWeather(context, list)
+                activity.setVisibleMore(context, true)
+            }
             2, 3 -> setWeatherWidget(id, num, list, false)
         }
 
@@ -295,10 +304,16 @@ class Weather(val context: Context) {
     }
 
     private fun hoursWeather(obj: JSONObject) {
+        val arrayTemp = ArrayList<String>()
+        val arrayTime = ArrayList<String>()
+        val arrayIcon = ArrayList<Int>()
+        val arrayPress = ArrayList<String>()
+        val arrayWind = ArrayList<String>()
+        val arrayFallout = ArrayList<String>()  // Осадки
+        val arrayClouds = ArrayList<String>()   // Облачность
+        val arrayHumidity = ArrayList<String>() // Влажность
+        val arrayUV = ArrayList<String>()       // УФ-индекс
 
-        val listTemp = ArrayList<String>()
-        val listTime = ArrayList<String>()
-        val listIcon = ArrayList<Int>()
         var indexZero = 0
         var dayWeek = ""
 
@@ -306,8 +321,15 @@ class Weather(val context: Context) {
         val hours = obj.getJSONObject("hourly")
         val timeArray = hours.getJSONArray("time")
         val tempsArray = hours.getJSONArray("temperature_2m")
+        val pressArray = hours.getJSONArray("surface_pressure")
+        val windArray = hours.getJSONArray("wind_speed_10m")
         val codeArray = hours.getJSONArray("weather_code")
         val isDayArray = hours.getJSONArray("is_day")
+
+        val falloutArray = hours.getJSONArray("precipitation")
+        val cloudsArray = hours.getJSONArray("cloud_cover")
+        val humidityArray = hours.getJSONArray("relative_humidity_2m")
+        val uvArray = hours.getJSONArray("uv_index")
 
         // Получить текущий час
         val hour = ConvertDate.getCurrentTime("H").toInt() + 1
@@ -320,6 +342,12 @@ class Weather(val context: Context) {
             val temp = convert.getTemperature(tempC, numTemp)
             val icon = convert.getIcon(isDayArray[i].hashCode(), codeArray[i].hashCode())
 
+            val pressureDb = pressArray[i].toString().toDouble()
+            val press = convert.getPress(pressureDb, numPress)
+
+            val windDb = windArray[i].toString().toDouble()
+            val wind = convert.getWind(windDb, numWind)
+
             val timeInt = time.filter { it.isDigit() }.toInt()
             if (timeInt == 0) {
                 indexZero = index
@@ -327,15 +355,44 @@ class Weather(val context: Context) {
                 dayWeek = dayWeek.replaceFirstChar { it.uppercase() }
             }
 
-            listTime.add(time)
-            listTemp.add(temp)
-            listIcon.add(icon)
+            val falloutMm = falloutArray[i].toString().toDouble()
+            val fallout = convert.getFall(falloutMm, numFall)
+            val clouds = cloudsArray[i].toString() + "%"
+            val humidity = humidityArray[i].toString() + "%"
+            val uvIndex = uvArray[i].toString().toFloat().roundToInt().toString()
+
+            arrayTime.add(time)
+            arrayTemp.add(temp)
+            arrayIcon.add(icon)
+            arrayPress.add(press)
+            arrayWind.add(wind)
+            arrayFallout.add(fallout)
+            arrayClouds.add(clouds)
+            arrayHumidity.add(humidity)
+            arrayUV.add(uvIndex)
         }
 
-        val time = listTime[indexZero]
-        listTime[indexZero] = "$dayWeek $time"
+        val time = arrayTime[indexZero]
+        arrayTime[indexZero] = "$dayWeek $time"
 
-        activity.setChart3(context, listTime, listTemp, listIcon, false)
+        activity.setChart(context, arrayTime, arrayTemp, arrayIcon, false)
+
+        ORANGE.arrayTime = arrayTime
+        ORANGE.arrayTemp = arrayTemp
+        ORANGE.arrayIcon = arrayIcon
+        ORANGE.arrayPress = arrayPress
+        ORANGE.arrayWind = arrayWind
+        ORANGE.arrayFallout = arrayFallout
+        ORANGE.arrayClouds = arrayClouds
+        ORANGE.arrayHumidity = arrayHumidity
+        ORANGE.arrayUV = arrayUV
+
+        ORANGE.numPress = numPress
+        ORANGE.numWind = numWind
+        ORANGE.numFall = numFall
+//        Log.d("myLogs", "$city, arrayUV: ${arrayUV.toList()}")
+//        Log.d("myLogs", "$city, arrayFallout: ${arrayFallout.toList()}")
+//        Log.d("myLogs", "fallout: ${arrayFallout[0]}, clouds: ${arrayClouds[0]}, humidity: ${arrayHumidity[0]},")
     }
 
     private fun daysWeather(obj: JSONObject) {

@@ -1,7 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="AppWidgetAttrs">
-        <attr name="appWidgetPadding" format="dimension" />
-        <attr name="appWidgetInnerRadius" format="dimension" />
-        <attr name="appWidgetRadius" format="dimension" />
+    <declare-styleable name="Chart">
+        <attr name="chart_arrayColor" format="reference" />
+
+        <attr name="chart_axisColor" format="color" />
+        <attr name="chart_axisShow" format="boolean" />
+        <attr name="chart_axisWidth" format="dimension" />
+
+        <attr name="chart_chartColor" format="color" />
+        <attr name="chart_itemLength" format="dimension" />
+
+        <attr name="chart_iconShow" format="boolean"/>
+        <attr name="chart_iconSize" format="dimension"/>
+        <attr name="chart_iconTop" format="boolean"/>
+
+        <attr name="chart_labelColor" format="color"/>
+        <attr name="chart_labelSize" format="dimension"/>
+        <attr name="chart_labelText" format="string"/>
+
+        <attr name="chart_markZeroAllHeight" format="boolean"/>
+        <attr name="chart_markZeroColor" format="color"/>
+        <attr name="chart_markZeroShow" format="boolean"/>
+        <attr name="chart_markZeroWidth" format="dimension"/>
+
+        <attr name="chart_minHeight" format="dimension" />
+        <attr name="chart_Show" format="boolean" />
+        <attr name="chart_Style" format="enum">
+            <enum name="line" value="0" />
+            <enum name="bar" value="1" />
+        </attr>
+
+        <attr name="chart_textAxisColor" format="color" />
+        <attr name="chart_textAxisShow" format="boolean" />
+        <attr name="chart_textAxisSize" format="dimension" />
+        <attr name="chart_textAxisTop" format="boolean" />
+
+        <attr name="chart_textColor" format="color" />
+        <attr name="chart_textOnLine" format="boolean"/>
+        <attr name="chart_textSize" format="dimension" />
+        <attr name="chart_textShow" format="boolean" />
+        <attr name="chart_textFormat" format="enum" >
+            <enum name="string" value="0" />
+            <enum name="integer" value="1" />
+        </attr>
+
+        <attr name="bar_gradientShow" format="boolean" />
+        <attr name="bar_gradientTopColor" format="color" />
+        <attr name="bar_partWidth" format="integer" />
+
+        <attr name="line_fillBottomColor" format="color" />
+        <attr name="line_fillTopColor" format="color" />
+        <attr name="line_fillShow" format="boolean" />
+        <attr name="line_fillStyle" format="enum" >
+            <enum name="uniform" value="0"/>
+            <enum name="gradient" value="1"/>
+        </attr>
+
+        <attr name="line_lineWidth" format="dimension" />
+        <attr name="line_pointColor" format="color"/>
+        <attr name="line_pointRadius" format="dimension"/>
+        <attr name="line_pointShow" format="boolean"/>
+
     </declare-styleable>
 </resources>

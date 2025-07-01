@@ -22,4 +22,12 @@
     <!--    4 – 250-->
     <!--    5 – 320-->
 
+    <!-- График -->
+    <dimen name="item_len">65dp</dimen>
+    <dimen name="text_size">12sp</dimen>
+    <dimen name="margin_top">6dp</dimen>
+    <dimen name="min_height">70dp</dimen>
+    <dimen name="label_size">18dp</dimen>
+    <dimen name="margin_chart">4dp</dimen>
+
 </resources>

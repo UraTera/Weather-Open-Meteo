@@ -25,10 +25,11 @@ object MyConst {
 
     const val NUM_TEMP = "num_temp"
     const val NUM_PRESS = "num_press"
+    const val NUM_WIND = "num_wind"
+    const val NUM_FALL = "num_fall"
+    const val NUM_FONT = "num_font"
     const val NUM_PERIOD = "num_period"
     const val PERIOD = "period"
-    const val NUM_WIND = "num_wind"
-    const val NUM_FONT = "num_font"
     const val TIME_LAST = "time_last"
     const val KEY_UPDATE = "key_update"
     const val KEY_PERIOD = "key_period"
@@ -39,9 +40,6 @@ object MyConst {
     const val HPA_MM_HG = 0.75006375542
     const val KM_MIL = 0.62137
     const val COLOR_BAR = -15522965
+    const val INCH = 0.03937
 
-    var widgetId = 0
-    var widgetNum = 0
-    var listSelect = ArrayList<Int>()
-    var keyUpdate = false
 }

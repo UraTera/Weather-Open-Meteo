@@ -59,6 +59,11 @@ class MapActivity : AppCompatActivity() {
         WindowCompat.getInsetsController(window, window.decorView)
             .isAppearanceLightNavigationBars = false
 
+        // Проверить подключение к Интернет
+        if (!MyLocation.isOnline(this)) {
+            DialogManager.messageNoNet(this)
+        }
+
         latitude = intent.getDoubleExtra(MyConst.LATITUDE, 0.0)
         longitude = intent.getDoubleExtra(MyConst.LONGITUDE, 0.0)
 

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sky5"
+    android:background="@drawable/sky_v"
     tools:context=".MainActivity">
 
     <ImageView
@@ -16,9 +16,9 @@
         android:contentDescription="@string/todo"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/imSetting"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/imSetting"
         app:srcCompat="@drawable/ic_search"
         tools:ignore="RtlSymmetry,ImageContrastCheck" />
 
@@ -68,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/title"
+        android:drawablePadding="8dp"
         android:gravity="center_vertical"
         android:paddingStart="16dp"
         android:paddingTop="8dp"
@@ -76,7 +77,6 @@
         android:text="@string/city"
         android:textColor="@color/white"
         android:textSize="18sp"
-        android:drawablePadding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imSetting"
@@ -205,17 +205,40 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tvForecast1"
-        style="@style/title_rc"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lineHour"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="@string/forecast_1"
+        android:background="@color/title_rc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardCurrent"
-        tools:ignore="RtlSymmetry,TextContrastCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/cardCurrent">
+
+        <TextView
+            android:id="@+id/tvForecast1"
+            style="@style/title_rc"
+            android:text="@string/forecast_1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry,TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/imMore"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/tool_bar_height"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/setting"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/ic_arrow_next"
+            tools:ignore="RtlSymmetry,ImageContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardLine"
@@ -225,7 +248,7 @@
         android:backgroundTint="@color/item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvForecast1">
+        app:layout_constraintTop_toBottomOf="@id/lineHour">
 
         <HorizontalScrollView
             android:layout_width="wrap_content"
@@ -233,20 +256,21 @@
             android:scrollbars="none"
             tools:ignore="SpeakableTextPresentCheck">
 
-            <com.tera.weather_open_meteo.LineChart
-                android:id="@+id/lineChart"
+            <com.tera.chart.Chart
+                android:id="@+id/tempChart"
                 android:layout_width="wrap_content"
                 android:layout_height="150dp"
-                app:line_fillingShow="true"
-                app:line_fillingStyle="gradient"
-                app:line_fillingTopColor="@color/top_color"
-                app:line_fillingBottomColor="@color/bottom_color"
-                app:line_lineLength="65dp"
-                app:line_markZeroShow="true"
-                app:line_textSize="11sp"
-                app:line_textAxisSize="10sp"
-                app:line_textColor="@color/white"
-                app:line_textAxisColor="@color/white"/>
+                app:chart_itemLength="65dp"
+                app:chart_markZeroShow="true"
+                app:chart_textAxisColor="@color/white"
+                app:chart_textAxisSize="10sp"
+                app:chart_textColor="@color/white"
+                app:chart_textOnLine="true"
+                app:chart_textSize="11sp"
+                app:line_fillShow="true"
+                app:line_fillStyle="gradient"
+                app:line_fillTopColor="@color/top_color"
+                app:line_fillBottomColor="@color/bottom_color"/>
 
         </HorizontalScrollView>
     </androidx.cardview.widget.CardView>

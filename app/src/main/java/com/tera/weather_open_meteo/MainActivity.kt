@@ -103,12 +103,6 @@ class MainActivity : AppCompatActivity() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 if (result.resultCode == RESULT_OK) {
                     keyMore = true
-//                    val arrayCurrent = ORANGE.arrayCurrent
-//                    val listCurrent = arrayCurrent[0]
-//                    setCurrentWeather(this, listCurrent)
-//                    val city = ORANGE.city
-//                    val city = listCurrent.city
-                    //Log.d("myLogs", "launcherMore, city: $city")
                 }
             }
 

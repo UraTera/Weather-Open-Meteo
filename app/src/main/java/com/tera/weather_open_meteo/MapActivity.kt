@@ -3,6 +3,7 @@ package com.tera.weather_open_meteo
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,8 @@ class MapActivity : AppCompatActivity() {
 
     private lateinit var map: MapView
     private lateinit var mapMarker: Marker
+    private lateinit var imBack: ImageView
+
     private var city: String? = null
     private var timeZone = ""
     private var region = ""
@@ -69,6 +72,11 @@ class MapActivity : AppCompatActivity() {
 
         map = findViewById(R.id.map)
         map.setMultiTouchControls(true)
+
+        imBack = findViewById(R.id.imBack)
+        imBack.setOnClickListener {
+            finish()
+        }
 
         initMarket()
         initMap()

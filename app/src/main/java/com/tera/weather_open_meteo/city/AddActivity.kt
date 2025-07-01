@@ -60,8 +60,8 @@ class AddActivity : AppCompatActivity() {
         edSearch = findViewById(R.id.edSearch)
         lineSearch = findViewById(R.id.lineSearch)
         progress = findViewById(R.id.progress)
-        imBack = findViewById(R.id.imBack)
 
+        imBack = findViewById(R.id.imBack)
         imBack.setOnClickListener {
             finish()
         }

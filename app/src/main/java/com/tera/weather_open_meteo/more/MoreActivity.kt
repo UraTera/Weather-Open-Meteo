@@ -1,12 +1,10 @@
-package com.tera.weather_open_meteo
+package com.tera.weather_open_meteo.more
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.SystemBarStyle
@@ -15,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import com.tera.weather_open_meteo.R
 import com.tera.weather_open_meteo.databinding.ActivityMoreBinding
 import com.tera.weather_open_meteo.utils.ConvertDate
 import com.tera.weather_open_meteo.utils.MyConst
@@ -23,8 +22,6 @@ import com.tera.weather_open_meteo.utils.ORANGE
 class MoreActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMoreBinding
-    // Отслеживание последнего прикосновения SV
-    private var touchedSVTag = -1
     private val color = MyConst.COLOR_BAR
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,8 +46,7 @@ class MoreActivity : AppCompatActivity() {
         binding.tvCity.text = city
 
         setChart()
-        initScroll()
-        initButton()
+        initControl()
         setOrientation()
         setBackground()
 
@@ -59,6 +55,18 @@ class MoreActivity : AppCompatActivity() {
         }, 200)
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    private fun initControl() = with(binding){
+        scroll1.setOnScrollListener { x, y ->
+            scroll2.scrollTo(x, y)
+        }
+        scroll2.setOnScrollListener { x, y ->
+            scroll1.scrollTo(x, y)
+        }
+        imBack.setOnClickListener {
+            sendToMain()
+        }
     }
 
     private fun setPosText() = with(binding) {
@@ -162,50 +170,10 @@ class MoreActivity : AppCompatActivity() {
         tvFall.text = text
     }
 
-    private fun initButton(){
-        binding.imBack.setOnClickListener {
-            sendToMain()
-        }
-    }
-
     private fun sendToMain() {
         val intent = Intent()
         setResult(RESULT_OK, intent)
         finish()
-    }
-
-    private fun initScroll() = with(binding){
-        val array = arrayListOf(scroll1, scroll2)
-        val scrollListener = View.OnScrollChangeListener { view, scrollX, _, _, _ ->
-            val currentSVTag = view!!.tag as Int
-
-            if (currentSVTag == touchedSVTag) {
-                for (svTag in 0 until array.size)
-                    if (svTag != currentSVTag)
-                        array[svTag].scrollTo(scrollX, 0)
-            }
-        }
-
-        @SuppressLint("ClickableViewAccessibility")
-        val itemTouchListener = View.OnTouchListener { sv, _ ->
-            val svTag = sv.tag as Int
-
-            if (touchedSVTag != -1 && touchedSVTag != svTag) {
-                // Остановить scrollView в середине прокрутки
-                array[touchedSVTag].fling(0)
-            }
-
-            touchedSVTag = svTag
-            false
-        }
-
-        @SuppressLint("ClickableViewAccessibility")
-        for (i in 0 until array.size) {
-            val sv = array[i]
-            sv.tag = i
-            sv.setOnScrollChangeListener(scrollListener)
-            sv.setOnTouchListener(itemTouchListener)
-        }
     }
 
     private fun setOrientation() {

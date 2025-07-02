@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sky_v"
-    tools:context=".MoreActivity">
+    tools:context=".more.MoreActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lineTittle"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@id/lineTittle"
         >
 
-        <HorizontalScrollView
+        <com.tera.weather_open_meteo.more.CustomScroll
             android:id="@+id/scroll1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 app:chart_textShow="false"
                 app:chart_textAxisColor="@color/white"/>
 
-        </HorizontalScrollView>
+        </com.tera.weather_open_meteo.more.CustomScroll>
 
     </androidx.cardview.widget.CardView>
 
@@ -96,7 +96,7 @@
             app:cardElevation="0dp"
             android:backgroundTint="@color/item">
 
-            <HorizontalScrollView
+            <com.tera.weather_open_meteo.more.CustomScroll
                 android:id="@+id/scroll2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -260,7 +260,7 @@
 
                 </LinearLayout>
 
-            </HorizontalScrollView>
+            </com.tera.weather_open_meteo.more.CustomScroll>
 
             <TextView
                 android:id="@+id/tvTemp"

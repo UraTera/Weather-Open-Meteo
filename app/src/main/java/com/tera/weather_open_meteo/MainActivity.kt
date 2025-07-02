@@ -34,6 +34,7 @@ import com.tera.weather_open_meteo.databinding.ActivityMainBinding
 import com.tera.weather_open_meteo.models.CityModel
 import com.tera.weather_open_meteo.models.CurrentModel
 import com.tera.weather_open_meteo.models.DaysModel
+import com.tera.weather_open_meteo.more.MoreActivity
 import com.tera.weather_open_meteo.utils.ConvertDate
 import com.tera.weather_open_meteo.utils.MyConst
 import com.tera.weather_open_meteo.utils.MyLocation

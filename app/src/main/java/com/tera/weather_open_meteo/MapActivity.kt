@@ -164,7 +164,6 @@ class MapActivity : AppCompatActivity() {
         val rounded = DialogManager.getRounded()
         dialog.window!!.setBackgroundDrawable(rounded)
         dialog.show()
-        dialog.window!!.setLayout(650, 350)
     }
 
 }

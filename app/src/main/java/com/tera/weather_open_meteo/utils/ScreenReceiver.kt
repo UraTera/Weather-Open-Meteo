@@ -6,7 +6,7 @@ import android.content.Intent
 import com.tera.weather_open_meteo.widgets.Widget
 import com.tera.weather_open_meteo.widgets.WidgetTab
 
-class ScreenReceiver() : BroadcastReceiver() {
+class ScreenReceiver: BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
 

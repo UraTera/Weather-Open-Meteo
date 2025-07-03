@@ -10,7 +10,7 @@ import com.tera.weather_open_meteo.utils.ConvertWeather
 import com.tera.weather_open_meteo.utils.MyConst
 import org.json.JSONObject
 
-class WeatherCity() {
+class WeatherCity{
 
     fun getWeatherTemp(context: Context, list: ArrayList<CityModel>, index: Int) {
 

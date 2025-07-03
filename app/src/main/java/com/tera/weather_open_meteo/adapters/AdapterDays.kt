@@ -40,7 +40,7 @@ class AdapterDays: ListAdapter<DaysModel, AdapterDays.Holder>(Comparator()) {
 
 
     // Сравнить элементы старые и новые.
-    class Comparator() : DiffUtil.ItemCallback<DaysModel>() {
+    class Comparator: DiffUtil.ItemCallback<DaysModel>() {
         override fun areItemsTheSame(oldItem: DaysModel, newItem: DaysModel): Boolean {
             return oldItem == newItem
         }

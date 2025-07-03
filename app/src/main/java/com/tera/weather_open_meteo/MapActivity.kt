@@ -28,9 +28,6 @@ class MapActivity : AppCompatActivity() {
 
     private lateinit var map: MapView
     private lateinit var mapMarker: Marker
-    private lateinit var imBack: ImageView
-
-    private var city: String? = null
     private var timeZone = ""
     private var region = ""
     private var latitude = 0.0
@@ -73,7 +70,7 @@ class MapActivity : AppCompatActivity() {
         map = findViewById(R.id.map)
         map.setMultiTouchControls(true)
 
-        imBack = findViewById(R.id.imBack)
+        val imBack: ImageView = findViewById(R.id.imBack)
         imBack.setOnClickListener {
             finish()
         }
@@ -107,7 +104,7 @@ class MapActivity : AppCompatActivity() {
                     latitude = p.latitude
                     longitude = p.longitude
 
-                    getCity()
+                    getAddress()
                 }
                 return true
             }
@@ -116,22 +113,16 @@ class MapActivity : AppCompatActivity() {
         map.overlays.add(mapEventsOverlay)
     }
 
-    private fun getCity() {
+    private fun getAddress() {
         thread {
-            city = MyLocation.getCity(this, latitude, longitude)
-            val name: String
-            if (city != null)
-                name = city!!
-            else {
-                var lat = "%.3f".format(latitude)
-                lat = lat.replace(',', '.')
-                var long = "%.3f".format(longitude)
-                long = long.replace(',', '.')
-                name = "$lat, $long"
-            }
-            runOnUiThread {
-                dialogMessage(name)
-            }
+            val list = MyLocation.getAddress(this, latitude, longitude)
+            val city = list[0]
+            val region = list[1]
+
+            if (city.isNotEmpty())
+                runOnUiThread {
+                    dialogMessage(city, region)
+                }
         }
     }
 
@@ -152,13 +143,15 @@ class MapActivity : AppCompatActivity() {
         }
     }
 
-    private fun dialogMessage(message: String) {
+    private fun dialogMessage(city: String, region: String) {
         val builder = AlertDialog.Builder(this)
-        builder.setMessage(message)
-            .setPositiveButton(" ") { _, _ ->
+        val cancel = getString(R.string.cancel)
+        builder.setTitle(city)
+            .setMessage(region)
+            .setPositiveButton("OK") { _, _ ->
+                sendToMain(city)
             }
-            .setNegativeButton("OK") { _,_ ->
-                sendToMain(message)
+            .setNegativeButton(cancel) { _, _ ->
             }
         val dialog = builder.create()
         val rounded = DialogManager.getRounded()

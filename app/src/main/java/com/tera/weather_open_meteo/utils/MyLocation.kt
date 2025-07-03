@@ -75,6 +75,23 @@ object MyLocation {
     }
 
     @Suppress("DEPRECATION")
+    fun getAddress(context: Context, lat: Double, long: Double): List<String> {
+        val geocoder = Geocoder(context)
+        val addresses = geocoder.getFromLocation(lat, long, 1) ?: listOf()
+        val address = addresses.firstOrNull()
+
+        var region = address?.getAddressLine(0)
+        var city = address?.locality
+        if (city == null)
+            city = region?.substringBefore(',') ?: ""
+
+        if (region == null)
+            region = ""
+
+        return listOf(city.toString(), region.toString())
+    }
+
+    @Suppress("DEPRECATION")
     fun getRegion(context: Context, lat: Double, long: Double): String {
         val geocoder = Geocoder(context)
         val addresses = geocoder.getFromLocation(lat, long, 1) ?: listOf()

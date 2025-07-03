@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
@@ -305,7 +304,6 @@ class MainActivity : AppCompatActivity() {
 
     // Управление прогресс барами
     fun setProgressBar(context: Context, id: Int, num: Int, keyOn: Boolean) {
-        Log.d("myLogs", "setProgressBar 1, num: $num, keyOn: $keyOn")
         when (num) {
             0 -> {
                 val view = context as Activity

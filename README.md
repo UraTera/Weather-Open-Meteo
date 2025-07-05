@@ -17,7 +17,7 @@ Project created in Android Studio Narwhal | 2025.1.1.
 ![weather4](https://github.com/user-attachments/assets/812b09d3-efb9-4458-9a65-d1d99a334a67)
 ![weather3](https://github.com/user-attachments/assets/dcb51f02-ea8c-4eb6-ae02-c9802b999490)
 
-To use the library, add the dependency:
+To use the chart library, add a dependency:
 ```
 dependencies {
 

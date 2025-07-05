@@ -12,27 +12,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="text.date">
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="text_param">
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginEnd">16dp</item>
-    </style>
-
     <style name="text_small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">10sp</item>
-    </style>
-
-    <style name="text_frame">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">25sp</item>
     </style>
 
     <!--  Планшет  -->
@@ -63,21 +47,6 @@
         <item name="android:layout_marginEnd">12dp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:theme">@style/radio_button</item>
-    </style>
-
-    <style name="text_rb.font">
-        <item name="android:layout_marginBottom">12dp</item>
-    </style>
-
-    <style name="view_color">
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">20dp</item>
-        <item name="android:layout_alignParentEnd">true</item>
-        <item name="android:layout_alignParentTop">true</item>
-        <item name="android:layout_marginEnd">16dp</item>
-        <item name="android:layout_marginTop">6dp</item>
-        <item name="android:layout_marginBottom">6dp</item>
-        <item name="android:background">@color/white</item>
     </style>
 
     <style name="title">

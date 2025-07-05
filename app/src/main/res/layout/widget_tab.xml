@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
         android:layout_marginTop="2dp"
-        android:text="@string/city"
+        tools:text="@tools:sample/cities"
         android:textColor="@color/white"
         android:textSize="18sp"
         tools:ignore="RelativeOverlap,TextContrastCheck" />
@@ -47,7 +47,7 @@
         android:layout_marginEnd="16dp"
         android:layout_alignParentEnd="true"
         tools:ignore="TextContrastCheck"
-        android:text="@string/none"/>
+        tools:text="@tools:sample/date/hhmm"/>
 
     <TextView
         android:id="@+id/tvLine"
@@ -92,7 +92,7 @@
         android:layout_toStartOf="@id/image"
         android:layout_toEndOf="@id/tcTime"
         android:gravity="center"
-        android:text="@string/none"
+        tools:text="25°C"
         android:textColor="@color/white"
         android:textSize="28sp"
         tools:ignore="RelativeOverlap,TextContrastCheck" />
@@ -106,7 +106,7 @@
         android:layout_toStartOf="@id/image"
         android:layout_toEndOf="@id/tcTime"
         android:gravity="center"
-        android:text="@string/none"
+        tools:text="25/12°C"
         tools:ignore="RelativeOverlap,TextContrastCheck" />
 
     <TextView
@@ -159,7 +159,7 @@
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@id/tvHumidity"
         android:gravity="end"
-        android:text="@string/none"
+        tools:text="@string/wmo67"
         tools:ignore="RtlHardcoded,TextContrastCheck" />
 
     <FrameLayout

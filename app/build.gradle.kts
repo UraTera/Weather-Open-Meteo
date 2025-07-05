@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.tera.weather_open_meteo"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.tera.weather_open_meteo"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -50,6 +50,8 @@ dependencies {
     implementation ("androidx.preference:preference-ktx:1.2.1")
     // OpenStreetMap (для функции карты)
     implementation ("org.osmdroid:osmdroid-android:6.1.20")
+
+    implementation("com.github.skydoves:balloon:1.6.12")
 
     implementation(libs.volley)
     implementation(libs.gson)

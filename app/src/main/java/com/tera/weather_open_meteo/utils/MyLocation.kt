@@ -88,7 +88,7 @@ object MyLocation {
         if (region == null)
             region = ""
 
-        return listOf(city.toString(), region.toString())
+        return listOf(city, region)
     }
 
     @Suppress("DEPRECATION")
@@ -113,7 +113,7 @@ object MyLocation {
         var timeZone = address?.timezone(context)
         if (timeZone == null)
             timeZone = MyConst.TIME_ZONE_NO
-        return timeZone.toString()
+        return timeZone
     }
 
 

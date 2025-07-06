@@ -183,7 +183,7 @@ class MainActivity : AppCompatActivity() {
 
     // Установить домашний список
     private fun getHomeList() : CityModel {
-        val sp = this.getSharedPreferences(MyConst.SETTING, Context.MODE_PRIVATE)
+        val sp = this.getSharedPreferences(MyConst.SETTING, MODE_PRIVATE)
         val cityHome = sp.getString(MyConst.CITY, "").toString()
         val region = sp.getString(MyConst.REGION, "").toString()
         val latitude = sp.getFloat(MyConst.LATITUDE, 0f).toDouble()
@@ -254,7 +254,7 @@ class MainActivity : AppCompatActivity() {
     // Также из виджетов
     fun saveCurrent(context: Context, list: CurrentModel) {
         val currentStr = gson.toJson(list).toString()
-        val sp = context.getSharedPreferences(MyConst.SETTING, Context.MODE_PRIVATE)
+        val sp = context.getSharedPreferences(MyConst.SETTING, MODE_PRIVATE)
         sp.edit {
             putString(MyConst.LIST_CURR, currentStr)
         }
@@ -278,7 +278,7 @@ class MainActivity : AppCompatActivity() {
         val timeStr = gson.toJson(listTime)
         val tempStr = gson.toJson(listTemp)
         val iconStr = gson.toJson(listIcon)
-        val sp = context.getSharedPreferences(MyConst.SETTING, Context.MODE_PRIVATE)
+        val sp = context.getSharedPreferences(MyConst.SETTING, MODE_PRIVATE)
         sp.edit {
             putString(MyConst.LIST_TIME, timeStr)
             putString(MyConst.LIST_TEMP, tempStr)
@@ -296,7 +296,7 @@ class MainActivity : AppCompatActivity() {
         adapterDays.submitList(list2)
 
         val listStr = gson.toJson(list)
-        val sp = context.getSharedPreferences(MyConst.SETTING, Context.MODE_PRIVATE)
+        val sp = context.getSharedPreferences(MyConst.SETTING, MODE_PRIVATE)
         sp.edit {
             putString(MyConst.LIST_DAYS, listStr)
         }
@@ -343,7 +343,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun restoreDate() {
-        val sp = getSharedPreferences(MyConst.SETTING, Context.MODE_PRIVATE)
+        val sp = getSharedPreferences(MyConst.SETTING, MODE_PRIVATE)
 //        sp.edit() {
 //            clear()
 //        }

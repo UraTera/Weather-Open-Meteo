@@ -4,6 +4,7 @@
     <string name="app_widget_tab_description">Планшет</string>
 
     <string name="city">Город</string>
+    <string name="date">сб, 05 июля 12:24</string>
     <string name="no_net">Нет подключения к Интернет!</string>
     <string name="no_gps">Местоположение отключено!</string>
     <string name="enable_gps">Включить определение местоположения?</string>

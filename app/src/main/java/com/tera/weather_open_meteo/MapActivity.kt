@@ -1,9 +1,11 @@
 package com.tera.weather_open_meteo
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.gson.Gson
+import com.skydoves.balloon.balloon
+import com.tera.weather_open_meteo.city.BalloonFactory
 import com.tera.weather_open_meteo.models.CityModel
 import com.tera.weather_open_meteo.utils.ConvertDate
 import com.tera.weather_open_meteo.utils.DialogManager
@@ -28,6 +32,8 @@ class MapActivity : AppCompatActivity() {
 
     private lateinit var map: MapView
     private lateinit var mapMarker: Marker
+    private lateinit var viewCenter: View
+    private val balloon by balloon<BalloonFactory>()
     private var timeZone = ""
     private var region = ""
     private var latitude = 0.0
@@ -67,6 +73,7 @@ class MapActivity : AppCompatActivity() {
         latitude = intent.getDoubleExtra(MyConst.LATITUDE, 0.0)
         longitude = intent.getDoubleExtra(MyConst.LONGITUDE, 0.0)
 
+        viewCenter = findViewById(R.id.viewCenter)
         map = findViewById(R.id.map)
         map.setMultiTouchControls(true)
 
@@ -121,8 +128,20 @@ class MapActivity : AppCompatActivity() {
 
             if (city.isNotEmpty())
                 runOnUiThread {
-                    dialogMessage(city, region)
+                    showBalloon(city, region)
                 }
+        }
+    }
+
+    private fun showBalloon(city: String, region: String){
+        val button: Button = balloon.getContentView().findViewById(R.id.bnBallon)
+        val tvCity: TextView = balloon.getContentView().findViewById(R.id.tvCity)
+        val tvRegion: TextView = balloon.getContentView().findViewById(R.id.tvRegion)
+        tvCity.text = city
+        tvRegion.text = region
+        balloon.showAlignTop(viewCenter)
+        button.setOnClickListener {
+            sendToMain(city)
         }
     }
 
@@ -143,20 +162,6 @@ class MapActivity : AppCompatActivity() {
         }
     }
 
-    private fun dialogMessage(city: String, region: String) {
-        val builder = AlertDialog.Builder(this)
-        val cancel = getString(R.string.cancel)
-        builder.setTitle(city)
-            .setMessage(region)
-            .setPositiveButton("OK") { _, _ ->
-                sendToMain(city)
-            }
-            .setNegativeButton(cancel) { _, _ ->
-            }
-        val dialog = builder.create()
-        val rounded = DialogManager.getRounded()
-        dialog.window!!.setBackgroundDrawable(rounded)
-        dialog.show()
-    }
+
 
 }

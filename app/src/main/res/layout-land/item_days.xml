@@ -19,7 +19,7 @@
             style="@style/text.tab"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/date5"
+            tools:text="@string/date5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +27,7 @@
             android:id="@+id/tvWeek"
             style="@style/text.tab"
             android:layout_marginStart="6dp"
-            android:text="@string/week"
+            tools:text="@tools:sample/date/day_of_week"
             android:textColor="@color/week"
             app:layout_constraintStart_toEndOf="@+id/tvDate"
             app:layout_constraintTop_toTopOf="@+id/tvDate" />
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:gravity="center"
-            android:text="@string/none"
+            tools:text="25/12°C"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/image"
@@ -63,7 +63,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/none"
+            tools:text="@string/wmo67"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/tvDate"

@@ -5,8 +5,8 @@
 
     <string name="todo" translatable="false">TODO</string>
     <string name="city">City</string>
+    <string name="date">Sat, 05 July 12:24</string>
     <string name="time" translatable="false">23:56</string>
-    <string name="date" translatable="false">Aug 23 Fri.</string>
     <string name="date_up" translatable="false">Aug 23 23:56</string>
     <string name="date2" translatable="false">Aug 24 Fri.</string>
     <string name="date5" translatable="false">Aug 24</string>

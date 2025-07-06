@@ -25,4 +25,11 @@
         app:srcCompat="@drawable/ic_arrow_back_gray"
         tools:ignore="RtlSymmetry,ImageContrastCheck" />
 
+    <View
+        android:id="@+id/viewCenter"
+        android:layout_width="20dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        />
+
 </FrameLayout>

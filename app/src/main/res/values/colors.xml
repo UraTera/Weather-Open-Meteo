@@ -29,13 +29,10 @@
     <!-- График -->
     <color name="bottom_color">#D400219D</color>
     <color name="top_color">#5EFDFF37</color>
-<!--    <color name="line_graph">#A4FAFA</color>-->
-<!--    <color name="point_graph">#FFFFFF</color>-->
-<!--    <color name="line_dash">#5C8CD5</color>-->
 
     <color name="blue">#0000FF</color>
     <color name="blue_50">#FFE1F5FE</color>
-    <color name="blue_200">#FF81D4FA</color>
+    <color name="blue_200">#0B94D0</color>
     <color name="blue_600">#FF039BE5</color>
     <color name="blue_800">#015DA6</color>
     <color name="blue_900">#01579B</color>

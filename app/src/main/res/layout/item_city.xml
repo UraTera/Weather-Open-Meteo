@@ -37,20 +37,19 @@
                 android:id="@+id/tvCity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:gravity="center_vertical"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="10dp"
-                tools:text="@tools:sample/cities"
+                android:drawablePadding="8dp"
+                android:gravity="center_vertical"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:drawablePadding="8dp"
                 app:layout_constraintBottom_toTopOf="@+id/tvDate"
                 app:layout_constraintEnd_toStartOf="@id/imIcon"
                 app:layout_constraintStart_toEndOf="@id/checkBox"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
-                app:layout_goneMarginStart="@dimen/gone_start" />
+                app:layout_goneMarginStart="@dimen/gone_start"
+                tools:text="@sample/city" />
 
             <TextView
                 android:id="@+id/tvDate"
@@ -70,14 +69,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                tools:text="@tools:sample/full_names"
                 android:textColor="@color/gray_200"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/checkBox"
                 app:layout_constraintTop_toBottomOf="@+id/tvDate"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_goneMarginStart="@dimen/gone_start" />
+                app:layout_goneMarginStart="@dimen/gone_start"
+                tools:text="@sample/regions" />
 
             <ImageView
                 android:id="@+id/imIcon"
@@ -86,11 +85,11 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/todo"
+                app:layout_constraintBottom_toTopOf="@id/tvRegion"
                 app:layout_constraintEnd_toStartOf="@id/tvTemp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/tvRegion"
                 tools:ignore="ImageContrastCheck"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@sample/images" />
 
             <TextView
                 android:id="@+id/tvTemp"

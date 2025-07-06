@@ -19,31 +19,33 @@
             style="@style/text.tab"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            tools:text="@string/date5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
+            tools:text="@string/date5" />
 
         <TextView
             android:id="@+id/tvWeek"
             style="@style/text.tab"
             android:layout_marginStart="6dp"
-            tools:text="@tools:sample/date/day_of_week"
             android:textColor="@color/week"
             app:layout_constraintStart_toEndOf="@+id/tvDate"
-            app:layout_constraintTop_toTopOf="@+id/tvDate" />
+            app:layout_constraintTop_toTopOf="@+id/tvDate"
+            tools:ignore="TextContrastCheck"
+            tools:text="@tools:sample/date/day_of_week" />
 
         <TextView
             android:id="@+id/tvMaxMin5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
             android:gravity="center"
-            tools:text="25/12°C"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/image"
             app:layout_constraintStart_toEndOf="@+id/tvWeek"
-            app:layout_constraintTop_toTopOf="@+id/tvDate" />
+            app:layout_constraintTop_toTopOf="@+id/tvDate"
+            tools:ignore="TextContrastCheck"
+            tools:text="25/12°C" />
 
 
         <ImageView
@@ -56,29 +58,30 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ImageContrastCheck"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@sample/images" />
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            tools:text="@string/wmo67"
             android:textColor="@color/white"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvDate"
             app:layout_constraintTop_toBottomOf="@id/image"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            tools:text="@sample/condition" />
 
         <TextView
             android:id="@+id/tvPress"
             style="@style/text_small.tab"
             android:layout_marginTop="8dp"
             android:text="@string/pressure"
-            app:layout_constraintStart_toStartOf="@+id/tvDate"
             app:layout_constraintBottom_toTopOf="@+id/tvWind"
-            app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+            app:layout_constraintStart_toStartOf="@+id/tvDate"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescription"
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/tvWind"
@@ -88,7 +91,8 @@
             android:text="@string/wind"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvDate"
-            app:layout_constraintTop_toBottomOf="@+id/tvPress" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPress"
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -141,6 +141,7 @@ class MapActivity : AppCompatActivity() {
         tvRegion.text = region
         balloon.showAlignTop(viewCenter)
         button.setOnClickListener {
+            balloon.dismiss()
             sendToMain(city)
         }
     }

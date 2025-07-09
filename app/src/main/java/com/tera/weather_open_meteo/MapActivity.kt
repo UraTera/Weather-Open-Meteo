@@ -122,9 +122,7 @@ class MapActivity : AppCompatActivity() {
 
     private fun getAddress() {
         thread {
-            val list = MyLocation.getAddress(this, latitude, longitude)
-            val city = list[0]
-            val region = list[1]
+            val (city, region) = MyLocation.getAddress(this, latitude, longitude)
 
             if (city.isNotEmpty())
                 runOnUiThread {

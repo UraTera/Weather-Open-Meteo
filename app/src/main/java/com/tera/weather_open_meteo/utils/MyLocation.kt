@@ -75,7 +75,7 @@ object MyLocation {
     }
 
     @Suppress("DEPRECATION")
-    fun getAddress(context: Context, lat: Double, long: Double): List<String> {
+    fun getAddress(context: Context, lat: Double, long: Double): Pair<String, String>  {
         val geocoder = Geocoder(context)
         val addresses = geocoder.getFromLocation(lat, long, 1) ?: listOf()
         val address = addresses.firstOrNull()
@@ -88,7 +88,7 @@ object MyLocation {
         if (region == null)
             region = ""
 
-        return listOf(city, region)
+        return Pair(city, region)
     }
 
     @Suppress("DEPRECATION")

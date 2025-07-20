@@ -22,7 +22,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <activity android:name=".more.MoreActivity"/>  <!-- MoreActivity -->
+        <activity android:name=".MoreActivity"/>  <!-- MoreActivity -->
         <activity android:name=".MapActivity" />
         <activity android:name=".city.ListActivity" />
         <activity android:name=".city.AddActivity" />

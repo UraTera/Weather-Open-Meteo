@@ -1,4 +1,4 @@
-package com.tera.weather_open_meteo.more
+package com.tera.weather_open_meteo
 
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import com.tera.weather_open_meteo.R
 import com.tera.weather_open_meteo.databinding.ActivityMoreBinding
 import com.tera.weather_open_meteo.utils.ConvertDate
 import com.tera.weather_open_meteo.utils.MyConst
@@ -26,7 +25,7 @@ class MoreActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge(navigationBarStyle = SystemBarStyle.light(color, color))
+        enableEdgeToEdge(navigationBarStyle = SystemBarStyle.Companion.light(color, color))
         binding = ActivityMoreBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -58,10 +57,10 @@ class MoreActivity : AppCompatActivity() {
     }
 
     private fun initControl() = with(binding){
-        scroll1.setOnScrollListener { x, y ->
+        scroll1.setOnScrollChangeListener { p0, x, y, p3, p4 ->
             scroll2.scrollTo(x, y)
         }
-        scroll2.setOnScrollListener { x, y ->
+        scroll2.setOnScrollChangeListener { p0, x, y, p3, p4 ->
             scroll1.scrollTo(x, y)
         }
         imBack.setOnClickListener {

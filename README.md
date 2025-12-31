@@ -8,7 +8,7 @@ Location permission required.
 
 There is a function to search for a location by name and by map. An example of using the Balloon library.
 
-Project created in Android Studio Narwhal | 2025.1.1.
+Project created in Android Studio Otter 2 Feature Drop | 2025.2.2 Patch 1.
 
 ![weather1](https://github.com/user-attachments/assets/86d15e3e-b347-4c1d-b4ff-2226bd61b90c)
 ![weather5](https://github.com/user-attachments/assets/b178ae3a-6d77-45cc-ae03-5740d3d8d69b)
@@ -21,7 +21,7 @@ To use the chart library, add a dependency:
 ```
 dependencies {
 
-    implementation("io.github.uratera:chart:1.0.4")
+    implementation(files("libs/Chart106.aar"))
 }
 ```
 An example of creating a library and a description see:

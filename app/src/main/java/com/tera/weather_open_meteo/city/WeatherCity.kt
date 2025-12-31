@@ -18,6 +18,8 @@ class WeatherCity{
         val longitude = list[index].longitude
         val timeZone = list[index].timeZone
 
+        //Log.d("myLogs", "latitude: $latitude, longitude: $longitude, timeZone: $timeZone")
+
         val url = MyConst.URL_API +
                 "latitude=$latitude&" +
                 "longitude=$longitude&" +

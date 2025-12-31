@@ -44,7 +44,8 @@ dependencies {
     implementation(files("libs/ProgressAnim.aar"))
     implementation(files("libs/CheckBox.aar"))
 
-    implementation("io.github.uratera:chart:1.0.4")
+    implementation(files("libs/Chart106.aar"))
+    //implementation("io.github.uratera:chart:1.0.4")
 
     // SharedPreferences (для предпочтений)
     implementation ("androidx.preference:preference-ktx:1.2.1")

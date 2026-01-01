@@ -22,6 +22,8 @@ To use the chart library, add a dependency:
 dependencies {
 
     implementation(files("libs/Chart106.aar"))
+    or
+    implementation("io.github.uratera:chart:1.0.6")
 }
 ```
 An example of creating a library and a description see:
